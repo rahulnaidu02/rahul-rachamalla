@@ -78,10 +78,18 @@ const PROJECTS = [
   },
   {
     title: "1-800 Voice Automation System",
-    subtitle: "Conversational Customer Service Platform",
+    subtitle: "Conversational Voice Bot for Hospitality",
     description:
-      "Voice-first automation prototype inspired by large-scale customer support systems, natural speech workflows, and automated resolution experiences.",
-    tags: ["Voice AI", "Customer Support", "Automation", "Conversational AI"],
+      "Conversational voice bot and actual 1-800 number for customer service automation in the hospitality industry. Natural speech workflows for automated resolution and customer support.",
+    tags: ["Voice AI", "1-800 Number", "Hospitality", "Automation", "Conversational AI"],
+    buttons: [{ label: "View Project", href: "#" }],
+  },
+  {
+    title: "Smart Mirror",
+    subtitle: "DIY Smart Display System",
+    description:
+      "Created a smart mirror using Raspberry Pi and an old television with a DIY mirror surface. Interactive display system combining hardware and web technologies.",
+    tags: ["Raspberry Pi", "IoT", "Smart Home", "DIY", "Hardware"],
     buttons: [{ label: "View Project", href: "#" }],
   },
   {
@@ -171,10 +179,6 @@ function CopaFleetGroup({ project, index, cardNumber }) {
       className="rounded-2xl border border-violet-400/20 bg-white/2 overflow-hidden relative"
       style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.10), 0 4px 24px rgba(139,92,246,0.08)" }}
     >
-      {/* Card number */}
-      <div className="absolute top-6 left-6 z-10 flex items-center justify-center">
-        <span className="font-syne font-bold text-violet-300" style={{ fontSize: "2.5rem" }}>{cardNumber}</span>
-      </div>
       {/* Header */}
       <div className="flex items-center justify-between px-8 py-5 border-b border-violet-400/15 bg-violet-400/4 flex-wrap gap-3">
         <div>
@@ -221,10 +225,6 @@ function SO101Card({ project, index, cardNumber }) {
       className="rounded-2xl border border-violet-400/20 bg-white/2 overflow-hidden relative"
       style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.10), 0 4px 24px rgba(139,92,246,0.08)" }}
     >
-      {/* Card number */}
-      <div className="absolute top-6 left-6 z-10 flex items-center justify-center">
-        <span className="font-syne font-bold text-violet-300" style={{ fontSize: "2.5rem" }}>{cardNumber}</span>
-      </div>
       {/* Header */}
       <div className="flex items-center justify-between px-8 py-5 border-b border-violet-400/15 bg-violet-400/4 flex-wrap gap-3">
         <div>
@@ -293,10 +293,6 @@ function ProjectCard({ project, index, cardNumber }) {
           : {}
       }
     >
-      {/* Card number */}
-      <div className="absolute top-6 left-6 z-10 flex items-center justify-center">
-        <span className="font-syne font-bold text-violet-300" style={{ fontSize: "2.5rem" }}>{cardNumber}</span>
-      </div>
 
 
       <MediaPlaceholder flagship={flagship} heroImage={heroImage} />
@@ -373,9 +369,21 @@ export default function ProjectsSection() {
       <div className="flex flex-col gap-6">
         {PROJECTS.map((p, i) => {
           const cardNumber = i + 1;
-          if (p.type === "copa-fleet-group") return <CopaFleetGroup key={i} project={p} index={i} cardNumber={cardNumber} />;
-          if (p.type === "so101") return <SO101Card key={i} project={p} index={i} cardNumber={cardNumber} />;
-          return <ProjectCard key={i} project={p} index={i} cardNumber={cardNumber} />;
+          return (
+            <div key={i} className="relative">
+              {/* Card number outside frame */}
+              <div className="absolute -left-16 top-0 flex items-center justify-center w-12 h-12">
+                <span className="font-syne font-bold text-violet-300" style={{ fontSize: "2.8rem" }}>{cardNumber}</span>
+              </div>
+              {p.type === "copa-fleet-group" ? (
+                <CopaFleetGroup project={p} index={i} cardNumber={cardNumber} />
+              ) : p.type === "so101" ? (
+                <SO101Card project={p} index={i} cardNumber={cardNumber} />
+              ) : (
+                <ProjectCard project={p} index={i} cardNumber={cardNumber} />
+              )}
+            </div>
+          );
         })}
       </div>
     </motion.div>
