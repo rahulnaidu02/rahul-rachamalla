@@ -86,7 +86,7 @@ const PROJECTS = [
   },
   {
     title: "Smart Mirror",
-    subtitle: "DIY Smart Display System",
+    subtitle: "DIY Smart Mirror",
     description:
       "Created a smart mirror using Raspberry Pi and an old television with a DIY mirror surface. Interactive display system combining hardware and web technologies.",
     tags: ["Raspberry Pi", "IoT", "Smart Home", "DIY", "Hardware"],
