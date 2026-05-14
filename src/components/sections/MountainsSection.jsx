@@ -10,7 +10,7 @@ const CLIMBS = [
   { name: "Mount Whitney", elevation: "14,505 ft", year: "2026" },
 ];
 
-const HERO_IMAGE = "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/2e790bba7_image.png";
+const HERO_IMAGE = "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/a7903d95f_image.png";
 
 export default function MountainsSection() {
   return (
