@@ -154,9 +154,10 @@ export default function HeroContent() {
 
         {/* Body paragraphs — consistent typography */}
         <motion.p variants={item} className="text-white/60 mb-5" style={BODY_STYLE}>
-          I am Rahul Rachamalla, an engineer by training and product builder by profession. I have spent the last decade
-          building conversational AI, connected vehicle experiences, edge infrastructure, enterprise networking,
-          IoT systems, and cloud-device platforms at{" "}
+          I'm a <span className="text-violet-400 font-medium">product builder</span> focused on{" "}
+          <span className="text-violet-400 font-medium">computational AI</span> and{" "}
+          <span className="text-violet-400 font-medium">physical AI</span>. I've spent the last decade building AI systems,
+          connected infrastructure, IoT platforms, and edge intelligence at{" "}
           <span className="text-violet-400 font-medium">Amazon</span>,{" "}
           <span className="text-violet-400 font-medium">HPE Aruba</span>,{" "}
           <span className="text-violet-400 font-medium">Cisco</span>, and{" "}
@@ -164,8 +165,9 @@ export default function HeroContent() {
         </motion.p>
 
         <motion.p variants={item} className="text-white/55 mb-8" style={BODY_STYLE}>
-          Today, I'm focused on physical AI, autonomous systems, telemetry, and field operations automation
-          through <span className="text-violet-400 font-medium">Copa Labs</span> and other experimental hardware/software projects.
+          Today, I'm exploring autonomous systems, hardware automation, and field operations through{" "}
+          <span className="text-violet-400 font-medium">Copa Labs</span>. Beyond work, I'm an{" "}
+          <span className="text-violet-400 font-medium">Ironman finisher</span> and endurance athlete committed to pushing physical limits.
         </motion.p>
 
         {/* Social + CTAs */}
