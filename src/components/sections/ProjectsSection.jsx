@@ -17,16 +17,24 @@ const PROJECTS = [
     flagship: true,
   },
   {
-    title: "COPA Autonomous Sanitation System",
-    subtitle: "Physical AI • Telemetry • Edge Intelligence",
+    title: "COPA Fleet Command Center",
+    subtitle: "Fleet Operations Dashboard",
     description:
-      "Connected portable sanitation platform focused on cleaner user experience, telemetry-driven servicing, remote monitoring, access control, and future autonomous cleaning workflows for outdoor events and field deployments.",
-    tags: ["ESP32", "IoT", "Telemetry", "Sensors", "Physical AI", "Automation"],
-    buttons: [
-      { label: "Learn More", href: "https://www.letsgocopa.com" },
-      { label: "GitHub", href: "#" },
-      { label: "Demo", href: "#" },
-    ],
+      "Real-time fleet overview showing active units, service alerts, at-risk units, and unacknowledged alerts across all deployed sanitation units.",
+    image: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/a19fab8b5_Screenshot2026-05-13062833.png",
+    tags: ["Fleet Ops", "Telemetry", "Alerts", "IoT Dashboard"],
+    isCopaFleet: true,
+    isCopaFleetFirst: true,
+  },
+  {
+    title: "COPA Unit Detail View",
+    subtitle: "Unit Snapshot, Sensors & Access Control",
+    description:
+      "Per-unit drill-down with water system, waste levels, battery, hardware health, door/lock/occupancy sensors, GPS, and connectivity status.",
+    image: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/38928a944_Screenshot2026-05-13063023.png",
+    tags: ["Sensors", "Access Control", "Hardware Health", "Real-Time"],
+    isCopaFleet: true,
+    isCopaFleetLast: true,
   },
   {
     title: "SO101 Open Source Robotics Arm",
@@ -150,6 +158,37 @@ function ProjectButton({ label, href }) {
   );
 }
 
+function CopaFleetCard({ project }) {
+  const { title, subtitle, description, tags, image } = project;
+  return (
+    <div className="flex flex-col">
+      <div className="border-b border-white/8 overflow-hidden">
+        <img src={image} alt={title} className="w-full object-cover object-top" />
+      </div>
+      <div className="p-6 flex flex-col gap-4">
+        <div>
+          <p className="font-mono text-violet-400/70 tracking-wider uppercase mb-1" style={{ fontSize: "0.8rem" }}>
+            {subtitle}
+          </p>
+          <h3 className="font-syne font-bold text-white leading-tight" style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.4rem)" }}>
+            {title}
+          </h3>
+        </div>
+        <p className="font-inter text-white/55 leading-[1.8]" style={{ fontSize: "0.9875rem" }}>
+          {description}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <span key={tag} className="font-inter tracking-wide px-3 py-1 rounded-full border bg-violet-400/7 border-violet-400/15 text-violet-300/65" style={{ fontSize: "0.8rem" }}>
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ProjectCard({ project, index }) {
   const { title, subtitle, description, tags, buttons, badge, flagship } = project;
 
@@ -174,13 +213,11 @@ function ProjectCard({ project, index }) {
           : {}
       }
     >
-      {/* Flagship glow pulse */}
       {flagship && (
         <div className="absolute -inset-px rounded-2xl pointer-events-none"
           style={{ background: "linear-gradient(135deg, rgba(139,92,246,0.08) 0%, transparent 60%)" }} />
       )}
 
-      {/* Badge */}
       {badge && (
         <div className="absolute top-5 right-5 z-10">
           <span
@@ -192,40 +229,27 @@ function ProjectCard({ project, index }) {
         </div>
       )}
 
-      {/* Media area */}
       <MediaPlaceholder flagship={flagship} />
 
-      {/* Content */}
       <div className="p-8 lg:p-10 flex flex-col gap-5">
-        {/* Header */}
         <div>
-          <p
-            className="font-mono text-violet-400/70 tracking-wider uppercase mb-2"
-            style={{ fontSize: "0.875rem" }}
-          >
+          <p className="font-mono text-violet-400/70 tracking-wider uppercase mb-2" style={{ fontSize: "0.875rem" }}>
             {subtitle}
           </p>
           <h3
-            className={`font-syne font-bold text-white leading-tight group-hover:text-violet-200 transition-colors ${
-              flagship ? "" : ""
-            }`}
+            className="font-syne font-bold text-white leading-tight group-hover:text-violet-200 transition-colors"
             style={{ fontSize: flagship ? "clamp(1.5rem, 2.5vw, 2rem)" : "clamp(1.3rem, 2vw, 1.75rem)" }}
           >
             {title}
           </h3>
         </div>
 
-        {/* Description */}
-        <p
-          className="font-inter text-white/58 leading-[1.85]"
-          style={{ fontSize: "1.0625rem" }}
-        >
+        <p className="font-inter text-white/58 leading-[1.85]" style={{ fontSize: "1.0625rem" }}>
           {flagship
             ? <>Patent-pending sanitation infrastructure system combining <span className="text-violet-300 font-semibold">Physical AI</span>, predictive maintenance, telemetry, user access control, and autonomous servicing workflows for real-world field deployments.</>
             : description}
         </p>
 
-        {/* Tags */}
         <div className="flex flex-wrap gap-2">
           {tags.map((tag) => (
             <span
@@ -242,7 +266,6 @@ function ProjectCard({ project, index }) {
           ))}
         </div>
 
-        {/* Buttons */}
         <div className="flex flex-wrap gap-3 pt-1">
           {buttons.map((btn) => (
             <ProjectButton key={btn.label} label={btn.label} href={btn.href} />
@@ -267,9 +290,60 @@ export default function ProjectsSection() {
       </p>
 
       <div className="flex flex-col gap-6">
-        {PROJECTS.map((project, i) => (
-          <ProjectCard key={i} project={project} index={i} />
-        ))}
+        {(() => {
+          const rendered = [];
+          let i = 0;
+          while (i < PROJECTS.length) {
+            const p = PROJECTS[i];
+            if (p.isCopaFleetFirst) {
+              // Find the pair
+              const pair = [p, PROJECTS[i + 1]].filter(Boolean);
+              rendered.push(
+                <motion.div
+                  key="copa-fleet-group"
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, delay: i * 0.06, ease: "easeOut" }}
+                  className="rounded-2xl border border-violet-400/20 bg-white/2 overflow-hidden"
+                  style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.10), 0 4px 24px rgba(139,92,246,0.08)" }}
+                >
+                  {/* Group header */}
+                  <div className="flex items-center justify-between px-8 py-5 border-b border-violet-400/15 bg-violet-400/4">
+                    <div>
+                      <p className="font-mono text-violet-400/60 tracking-widest uppercase mb-0.5" style={{ fontSize: "0.72rem" }}>Live Product</p>
+                      <h3 className="font-syne font-bold text-white" style={{ fontSize: "clamp(1.1rem, 2vw, 1.5rem)" }}>
+                        COPA Autonomous Sanitation System
+                      </h3>
+                    </div>
+                    <a
+                      href="https://copa-fleet-command-center.base44.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 font-inter font-medium px-5 py-2.5 rounded-lg border border-violet-400/50 text-violet-300 hover:bg-violet-400/12 hover:border-violet-400/80 hover:text-violet-200 transition-all duration-200 flex-shrink-0"
+                      style={{ fontSize: "0.9rem" }}
+                    >
+                      Check out more on this website <ExternalLink className="w-3.5 h-3.5 opacity-60" />
+                    </a>
+                  </div>
+                  {/* Two dashboard cards side by side */}
+                  <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/8">
+                    {pair.map((card) => (
+                      <CopaFleetCard key={card.title} project={card} />
+                    ))}
+                  </div>
+                </motion.div>
+              );
+              i += 2;
+            } else if (p.isCopaFleet) {
+              i++;
+            } else {
+              rendered.push(<ProjectCard key={i} project={p} index={i} />);
+              i++;
+            }
+          }
+          return rendered;
+        })()}
       </div>
     </motion.div>
   );
