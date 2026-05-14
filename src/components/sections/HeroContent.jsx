@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Instagram, Mail, Flame, Waves, Mountain, Swords, Dumbbell } from "lucide-react";
+import { Github, Linkedin, Instagram, Mail, Flame, Waves, Mountain, Swords, Bike } from "lucide-react";
 
 const SubstackIcon = () => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
@@ -17,11 +17,41 @@ const SOCIALS = [
 ];
 
 const ACCOMPLISHMENTS = [
-  { icon: Flame, label: "Full Ironman Finisher" },
-  { icon: Waves, label: "Multiple Half Ironman Finisher" },
-  { icon: Waves, label: "Swam Alcatraz to SF" },
-  { icon: Mountain, label: "Amateur Mountain Climber" },
-  { icon: Swords, label: "Former MMA Practitioner" },
+  {
+    icon: Flame,
+    label: "Full Ironman Finisher",
+    sub: "140.6-mile endurance race completed",
+  },
+  {
+    icon: Waves,
+    label: "Multiple Half Ironman Finisher",
+    sub: "Multiple 70.3-mile triathlon finishes",
+  },
+  {
+    icon: Waves,
+    label: "Swam Alcatraz to San Francisco",
+    sub: "Open-water Pacific Ocean swim",
+  },
+  {
+    icon: Bike,
+    label: "300 km Bike Ride Finisher",
+    sub: "Long-distance endurance cycling",
+  },
+  {
+    icon: Mountain,
+    label: "Amateur Mountain Climber",
+    sub: "High-altitude climbs up to ~20,000 ft",
+  },
+  {
+    icon: Mountain,
+    label: "Rock Climbing",
+    sub: "Climbing grade up to 5.7",
+  },
+  {
+    icon: Swords,
+    label: "Former MMA Practitioner",
+    sub: "Combat sports training background",
+  },
 ];
 
 const PILLS = [
@@ -172,36 +202,51 @@ export default function HeroContent() {
 
         {/* Accomplishment cards */}
         <motion.div variants={item}>
-          <p className="font-mono text-white/30 text-xs tracking-widest uppercase mb-4">Beyond Work</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
-            {ACCOMPLISHMENTS.map(({ icon: Icon, label }, i) => (
+          <p className="font-mono text-white/30 tracking-widest uppercase mb-6" style={{ fontSize: "0.8rem" }}>Beyond Work</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {ACCOMPLISHMENTS.map(({ icon: Icon, label, sub }, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 1.2 + i * 0.08 }}
-                className="group flex flex-col items-center gap-3 px-4 py-5 rounded-xl border border-white/8 bg-white/3 backdrop-blur-sm hover:border-violet-400/35 hover:bg-violet-400/6 transition-all duration-300 cursor-default text-center"
-                style={{ boxShadow: "0 0 0 0 rgba(167,139,250,0)" }}
-                whileHover={{ boxShadow: "0 0 20px rgba(167,139,250,0.08)" }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 1.1 + i * 0.1, ease: "easeOut" }}
+                whileHover={{ y: -3, boxShadow: "0 8px 32px rgba(167,139,250,0.18)" }}
+                className="group flex items-center gap-5 px-6 py-5 rounded-2xl border border-white/10 bg-white/3 backdrop-blur-sm hover:border-violet-400/40 hover:bg-violet-400/6 transition-all duration-300 cursor-default"
+                style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.3)" }}
               >
-                <div className="w-9 h-9 rounded-lg bg-violet-400/12 border border-violet-400/20 flex items-center justify-center group-hover:bg-violet-400/20 transition-colors">
-                  <Icon className="w-4 h-4 text-violet-400" />
+                {/* Icon */}
+                <div
+                  className="flex-shrink-0 w-14 h-14 rounded-xl bg-violet-400/12 border border-violet-400/25 flex items-center justify-center group-hover:bg-violet-400/22 group-hover:border-violet-400/45 transition-all duration-300"
+                >
+                  <Icon className="w-7 h-7 text-violet-400" />
                 </div>
-                <span className="font-inter text-white/70 leading-snug group-hover:text-white/90 transition-colors" style={{ fontSize: "0.85rem" }}>
-                  {label}
-                </span>
+                {/* Text */}
+                <div className="flex flex-col gap-1 min-w-0">
+                  <span
+                    className="font-syne font-bold text-white group-hover:text-white transition-colors leading-tight"
+                    style={{ fontSize: "clamp(1.05rem, 1.5vw, 1.375rem)" }}
+                  >
+                    {label}
+                  </span>
+                  <span
+                    className="font-inter text-white/50 group-hover:text-white/70 transition-colors leading-snug"
+                    style={{ fontSize: "clamp(0.875rem, 1.1vw, 1.0625rem)" }}
+                  >
+                    {sub}
+                  </span>
+                </div>
               </motion.div>
             ))}
           </div>
         </motion.div>
 
-        {/* Pills — clearly secondary, below accomplishments */}
-        <motion.div variants={item} className="flex flex-wrap gap-2 mt-8">
+        {/* Pills */}
+        <motion.div variants={item} className="flex flex-wrap gap-3 mt-10">
           {PILLS.map((pill) => (
             <span
               key={pill}
-              className="font-mono tracking-wide px-3 py-1.5 rounded-full bg-violet-400/6 border border-violet-400/15 text-violet-300/50"
-              style={{ fontSize: "0.72rem" }}
+              className="font-mono tracking-wide px-5 py-2.5 rounded-full bg-violet-400/8 border border-violet-400/25 text-violet-300/75 hover:text-violet-300 hover:border-violet-400/45 hover:bg-violet-400/12 transition-all duration-200 cursor-default"
+              style={{ fontSize: "clamp(0.875rem, 1vw, 1rem)" }}
             >
               {pill}
             </span>
