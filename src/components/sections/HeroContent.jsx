@@ -13,7 +13,7 @@ const SOCIALS = [
   { Icon: Linkedin, href: "https://www.linkedin.com/in/rahulrachamalla/", label: "LinkedIn" },
   { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
   { Icon: SubstackIcon, href: "https://substack.com", label: "Substack" },
-  { Icon: Mail, href: "mailto:rahul@example.com", label: "Email" },
+  { Icon: Mail, href: "mailto:rahulnaidu.rac@gmail.com", label: "Email" },
 ];
 
 const ACCOMPLISHMENTS = [
