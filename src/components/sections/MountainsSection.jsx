@@ -20,8 +20,8 @@ export default function MountainsSection() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-10">
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}
-          className="lg:col-span-2 rounded-2xl overflow-hidden border border-white/8">
-          <img src={HERO_IMAGE} alt="Mountains" className="w-full h-auto object-cover" style={{ maxHeight: "500px" }} />
+          className="lg:col-span-2 rounded-2xl overflow-hidden border border-white/8 bg-white/2">
+          <img src={HERO_IMAGE} alt="Mountains" className="w-full h-auto object-contain" />
         </motion.div>
 
         <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.15 }}
