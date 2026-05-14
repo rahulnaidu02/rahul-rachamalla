@@ -38,7 +38,7 @@ export default function SideNav({ activeSection, onNavClick, profileImage, onIma
     <>
       {/* ── Desktop sidebar ── */}
       <aside
-        className="hidden lg:flex fixed left-0 top-0 h-screen w-72 xl:w-80 flex-col justify-between px-12 py-20 z-30"
+        className="hidden lg:flex fixed left-0 top-0 h-screen w-80 xl:w-96 flex-col justify-between px-12 py-20 z-30"
         style={{ borderRight: "1px solid rgba(255,255,255,0.05)" }}
       >
         {/* TOP: identity + nav */}

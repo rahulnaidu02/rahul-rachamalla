@@ -1,9 +1,9 @@
 import { useState, useRef } from "react";
 import SideNav from "../components/layout/SideNav";
-import HeroContent from "../components/sections/HeroContent";
+import HeroContent from "../components/sections/HeroContent.jsx";
 import AboutSection from "../components/sections/AboutSection";
-import ExperienceSection from "../components/sections/ExperienceSection";
-import ProjectsSection from "../components/sections/ProjectsSection";
+import ExperienceSection from "../components/sections/ExperienceSection.jsx";
+import ProjectsSection from "../components/sections/ProjectsSection.jsx";
 import IronmanSection from "../components/sections/IronmanSection";
 import MountainsSection from "../components/sections/MountainsSection";
 import HardwareSection from "../components/sections/HardwareSection";
@@ -47,7 +47,7 @@ export default function Home() {
       />
 
       {/* Scrollable right content */}
-      <main className="flex-1 lg:ml-80 xl:ml-96">
+      <main className="flex-1 lg:ml-80 xl:ml-96 2xl:ml-96">
         {/* Cursor-following gradient glow (static decorative) */}
         {/* Nebula background — subtle purple-gray */}
         <div className="fixed inset-0 pointer-events-none z-0" style={{
@@ -58,7 +58,7 @@ export default function Home() {
           `
         }} />
 
-        <div className="relative z-10 max-w-3xl mx-auto px-6 lg:px-12 pt-24 lg:pt-24 pb-24 space-y-40">
+        <div className="relative z-10 max-w-5xl mx-auto px-8 lg:px-16 pt-24 lg:pt-24 pb-24 space-y-40">
           {/* Hero */}
           <section ref={(el) => (sectionRefs.current["hero"] = el)}>
             <HeroContent />
