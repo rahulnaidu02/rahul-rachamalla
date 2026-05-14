@@ -96,6 +96,23 @@ const PROJECTS = [
     buttons: [{ label: "View Project", href: "#" }],
     pending: true,
   },
+  {
+    number: "12",
+    title: "COPA Unit Identification & Remote Unlock System",
+    description: "Mobile app workflow for remotely identifying, locating, and scanning units to unlock access. Features map-based unit discovery, QR code scanning, team management, and real-time unit health status.",
+    tags: ["Mobile App", "QR Scanning", "Location Services", "Remote Access", "Unit Management"],
+    buttons: [{ label: "View Prototype", href: "#" }],
+    carouselImages: [
+      "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/5586dd99c_COPAdetailSanSquad.png",
+      "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/07d6f1812_DashboardOpshead.png",
+      "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/a3ebfa739_FeedbackCustomer.png",
+      "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/28e135e96_Map-COPAdetailCustomer.png",
+      "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/242f435bc_MapCustomer.png",
+      "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/0e1c4eb97_MyunitsSanSquad.png",
+      "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/8e6d505e5_Phoneinhand.png",
+      "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/28d6ed71d_QRcodescanCustomer.png",
+    ],
+  },
 ];
 
 function ProjectButton({ label, href, isPrimary }) {
