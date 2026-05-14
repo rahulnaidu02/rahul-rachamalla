@@ -8,6 +8,7 @@ const TABS = [
   { id: "mountains", label: "Mountains" },
   { id: "hardware", label: "Hardware" },
   { id: "github", label: "GitHub" },
+  { id: "mma", label: "MMA" },
   { id: "contact", label: "Contact" },
 ];
 

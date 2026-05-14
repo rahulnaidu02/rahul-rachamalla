@@ -11,7 +11,7 @@ export default function AboutTab() {
     <div className="space-y-8">
       <motion.div {...fadeUp(0)}>
         <h2 className="font-syne text-lg font-bold text-foreground mb-3">
-          👋 Hey, I'm [Your Name]
+          👋 Hey, I'm Rahul
         </h2>
         <p className="font-inter text-[#A0A0A0] leading-relaxed text-sm">
           I'm an engineer who can't sit still. By day I design hardware and write
