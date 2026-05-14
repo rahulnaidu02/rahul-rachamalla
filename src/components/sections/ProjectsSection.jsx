@@ -7,8 +7,8 @@ const PROJECTS = [
     title: "Patent Pending Autonomous Maintenance System",
     subtitle: "Predictive Maintenance, User Access Control, Autonomous Servicing",
     description:
-      "Patent-pending sanitation infrastructure system combining predictive maintenance, telemetry, user access control, and autonomous servicing workflows for real-world field deployments.",
-    tags: ["Patent Pending", "Predictive Maintenance", "Access Control", "Telemetry", "Autonomous Servicing"],
+      "Patent-pending sanitation infrastructure system combining Physical AI, predictive maintenance, telemetry, user access control, and autonomous servicing workflows for real-world field deployments.",
+    tags: ["Patent Pending", "Physical AI", "Predictive Maintenance", "Access Control", "Telemetry", "Autonomous Servicing"],
     buttons: [
       { label: "View Details", href: "#" },
       { label: "Copa Website", href: "https://www.letsgocopa.com" },
@@ -102,12 +102,19 @@ const PROJECTS = [
 ];
 
 function MediaPlaceholder({ flagship }) {
+  if (flagship) {
+    return (
+      <div className="w-full border-b border-white/6 overflow-hidden">
+        <img
+          src="https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/077079eb9_Reference_MethodFlowofCopaAutonomousUnit.png"
+          alt="Method Flow: COPA Autonomous Sanitation System"
+          className="w-full object-contain bg-white"
+        />
+      </div>
+    );
+  }
   return (
-    <div
-      className={`w-full flex-shrink-0 flex items-center justify-center border-b border-white/6 bg-gradient-to-br from-white/3 to-transparent ${
-        flagship ? "h-64 lg:h-72" : "h-52 lg:h-60"
-      }`}
-    >
+    <div className="w-full flex-shrink-0 flex items-center justify-center border-b border-white/6 bg-gradient-to-br from-white/3 to-transparent h-52 lg:h-60">
       <div className="text-center">
         <div className="w-12 h-12 rounded-full border border-white/12 flex items-center justify-center mx-auto mb-3 bg-white/4">
           <Play className="w-5 h-5 text-white/20" />
@@ -213,7 +220,9 @@ function ProjectCard({ project, index }) {
           className="font-inter text-white/58 leading-[1.85]"
           style={{ fontSize: "1.0625rem" }}
         >
-          {description}
+          {flagship
+            ? <>Patent-pending sanitation infrastructure system combining <span className="text-violet-300 font-semibold">Physical AI</span>, predictive maintenance, telemetry, user access control, and autonomous servicing workflows for real-world field deployments.</>
+            : description}
         </p>
 
         {/* Tags */}
