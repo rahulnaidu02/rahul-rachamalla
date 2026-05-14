@@ -15,7 +15,6 @@ const NAV_ITEMS = [
   { id: "projects", label: "AI Projects" },
   { id: "ironman", label: "Ironman" },
   { id: "mountains", label: "Mountains" },
-  { id: "github", label: "GitHub" },
   { id: "mma", label: "MMA" },
   { id: "substack", label: "Substack" },
   { id: "contact", label: "Contact" },
