@@ -218,20 +218,23 @@ function ProjectCard({ project, index }) {
           style={{ background: "linear-gradient(135deg, rgba(139,92,246,0.08) 0%, transparent 60%)" }} />
       )}
 
-      {badge && (
-        <div className="absolute top-5 right-5 z-10">
-          <span
-            className="font-mono font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full border border-violet-400/50 bg-violet-400/12 text-violet-300"
-            style={{ fontSize: "0.7rem" }}
-          >
-            {badge}
-          </span>
-        </div>
-      )}
-
       <MediaPlaceholder flagship={flagship} />
 
       <div className="p-8 lg:p-10 flex flex-col gap-5">
+        {/* USPTO badge — prominently placed below image, no overlap */}
+        {badge && (
+          <div className="flex items-center gap-3 px-5 py-3 rounded-xl border border-amber-400/60 bg-amber-400/10"
+            style={{ boxShadow: "0 0 16px rgba(251,191,36,0.15)" }}>
+            <span className="text-amber-300 text-lg">⚖️</span>
+            <span
+              className="font-mono font-bold tracking-widest uppercase text-amber-300"
+              style={{ fontSize: "0.8rem", letterSpacing: "0.1em" }}
+            >
+              {badge}
+            </span>
+          </div>
+        )}
+
         <div>
           <p className="font-mono text-violet-400/70 tracking-wider uppercase mb-2" style={{ fontSize: "0.875rem" }}>
             {subtitle}
