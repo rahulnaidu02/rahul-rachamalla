@@ -161,16 +161,20 @@ function ProjectButton({ label, href }) {
   );
 }
 
-function CopaFleetGroup({ project, index }) {
+function CopaFleetGroup({ project, index, cardNumber }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, delay: index * 0.06, ease: "easeOut" }}
-      className="rounded-2xl border border-violet-400/20 bg-white/2 overflow-hidden"
+      className="rounded-2xl border border-violet-400/20 bg-white/2 overflow-hidden relative"
       style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.10), 0 4px 24px rgba(139,92,246,0.08)" }}
     >
+      {/* Card number */}
+      <div className="absolute top-4 right-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-violet-400/20 border border-violet-400/40">
+        <span className="font-syne font-bold text-violet-300" style={{ fontSize: "1.1rem" }}>{cardNumber}</span>
+      </div>
       {/* Header */}
       <div className="flex items-center justify-between px-8 py-5 border-b border-violet-400/15 bg-violet-400/4 flex-wrap gap-3">
         <div>
@@ -211,16 +215,20 @@ function CopaFleetGroup({ project, index }) {
   );
 }
 
-function SO101Card({ project, index }) {
+function SO101Card({ project, index, cardNumber }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, delay: index * 0.06, ease: "easeOut" }}
-      className="rounded-2xl border border-violet-400/20 bg-white/2 overflow-hidden"
+      className="rounded-2xl border border-violet-400/20 bg-white/2 overflow-hidden relative"
       style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.10), 0 4px 24px rgba(139,92,246,0.08)" }}
     >
+      {/* Card number */}
+      <div className="absolute top-4 right-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-violet-400/20 border border-violet-400/40">
+        <span className="font-syne font-bold text-violet-300" style={{ fontSize: "1.1rem" }}>{cardNumber}</span>
+      </div>
       {/* Header */}
       <div className="flex items-center justify-between px-8 py-5 border-b border-violet-400/15 bg-violet-400/4 flex-wrap gap-3">
         <div>
@@ -265,7 +273,7 @@ function SO101Card({ project, index }) {
   );
 }
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project, index, cardNumber }) {
   const { title, subtitle, description, tags, buttons, badge, flagship, heroImage } = project;
 
   return (
@@ -289,10 +297,11 @@ function ProjectCard({ project, index }) {
           : {}
       }
     >
-      {flagship && (
-        <div className="absolute -inset-px rounded-2xl pointer-events-none"
-          style={{ background: "linear-gradient(135deg, rgba(139,92,246,0.08) 0%, transparent 60%)" }} />
-      )}
+      {/* Card number */}
+      <div className="absolute top-4 right-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-violet-400/20 border border-violet-400/40">
+        <span className="font-syne font-bold text-violet-300" style={{ fontSize: "1.1rem" }}>{cardNumber}</span>
+      </div>
+
 
       <MediaPlaceholder flagship={flagship} heroImage={heroImage} />
 
@@ -370,9 +379,10 @@ export default function ProjectsSection() {
 
       <div className="flex flex-col gap-6">
         {PROJECTS.map((p, i) => {
-          if (p.type === "copa-fleet-group") return <CopaFleetGroup key={i} project={p} index={i} />;
-          if (p.type === "so101") return <SO101Card key={i} project={p} index={i} />;
-          return <ProjectCard key={i} project={p} index={i} />;
+          const cardNumber = i + 1;
+          if (p.type === "copa-fleet-group") return <CopaFleetGroup key={i} project={p} index={i} cardNumber={cardNumber} />;
+          if (p.type === "so101") return <SO101Card key={i} project={p} index={i} cardNumber={cardNumber} />;
+          return <ProjectCard key={i} project={p} index={i} cardNumber={cardNumber} />;
         })}
       </div>
     </motion.div>
