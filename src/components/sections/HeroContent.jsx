@@ -165,10 +165,10 @@ export default function HeroContent() {
       {/* Right: large profile photo */}
       <motion.div
         variants={item}
-        className="hidden md:flex flex-shrink-0 ml-12 items-center justify-center"
+        className="hidden md:flex flex-shrink-0 ml-12 items-start justify-center"
       >
         <div
-          className="relative w-64 h-80 xl:w-72 xl:h-96 rounded-2xl overflow-hidden"
+          className="relative w-80 h-96 xl:w-96 xl:h-[28rem] rounded-2xl overflow-hidden"
           style={{
             boxShadow: "0 0 0 1px rgba(167,139,250,0.15), 0 32px 64px rgba(0,0,0,0.5)",
           }}
