@@ -55,14 +55,14 @@ export default function SideNav({ activeSection, onNavClick, profileImage, onIma
           </div>
 
           {/* Name */}
-          <h1 className="font-syne text-3xl font-bold text-white leading-tight tracking-tight mb-1">
+          <h1 className="font-syne text-4xl font-bold text-white leading-tight tracking-tight mb-1">
             Rahul
             <br />
             Rachamalla
           </h1>
 
           {/* Tagline */}
-          <p className="font-mono text-sm text-violet-400 mb-10 tracking-wide">
+          <p className="font-mono text-base text-violet-400 mb-10 tracking-wide">
             Engineer · Athlete · Builder
           </p>
 
@@ -86,7 +86,7 @@ export default function SideNav({ activeSection, onNavClick, profileImage, onIma
                     }}
                   />
                   <span
-                    className="font-mono text-xs tracking-widest uppercase transition-colors duration-200"
+                    className="font-mono text-sm tracking-widest uppercase transition-colors duration-200"
                     style={{ color: isActive ? "#e2e8f0" : "rgba(255,255,255,0.35)" }}
                   >
                     {item.label}

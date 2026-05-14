@@ -114,7 +114,7 @@ export default function HeroContent() {
           variants={item}
           className="font-syne font-semibold leading-tight mb-8"
           style={{
-            fontSize: "clamp(1.4rem, 3.5vw, 2.6rem)",
+            fontSize: "clamp(1.6rem, 4vw, 3rem)",
             background: "linear-gradient(135deg, #a78bfa 0%, #818cf8 50%, #38bdf8 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -131,7 +131,7 @@ export default function HeroContent() {
         {/* Body copy */}
         <motion.p
           variants={item}
-          className="font-inter text-white/50 text-base leading-relaxed max-w-md mb-10"
+          className="font-inter text-white/50 text-lg leading-relaxed max-w-md mb-10"
         >
           Hardware & software engineer. Ironman finisher. Mountain climber. MMA practitioner.
           I build embedded systems by day and push the limits of human performance by weekend.
