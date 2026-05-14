@@ -196,7 +196,7 @@ function CopaFleetGroup({ project, index, cardNumber }) {
         </a>
       </div>
       {/* Image display */}
-      <div className="overflow-hidden" style={{ height: "360px" }}>
+      <div className="overflow-hidden" style={{ height: "500px" }}>
         <img src={project.images[0]} alt={project.title} className="w-full h-full object-cover object-top" />
       </div>
       {/* Shared description below */}
