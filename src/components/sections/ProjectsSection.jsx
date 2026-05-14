@@ -252,7 +252,10 @@ export default function ProjectsSection() {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <SectionHeading num="03" title="Projects" />
+      <SectionHeading num="04" title="AI Projects" />
+      <p className="font-inter text-white/45 mb-10 leading-[1.8]" style={{ fontSize: "1.0625rem" }}>
+        Experimental systems across AI, robotics, telemetry, automation, and connected infrastructure.
+      </p>
 
       <div className="flex flex-col gap-6">
         {PROJECTS.map((project, i) => (
