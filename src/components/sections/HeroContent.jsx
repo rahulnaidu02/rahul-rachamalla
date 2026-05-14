@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Instagram, Mail } from "lucide-react";
+import { Github, Linkedin, Instagram, Mail, Flame, Waves, Mountain, Swords, Dumbbell } from "lucide-react";
 
 const SubstackIcon = () => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
@@ -14,6 +14,14 @@ const SOCIALS = [
   { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
   { Icon: SubstackIcon, href: "https://substack.com", label: "Substack" },
   { Icon: Mail, href: "mailto:rahul@example.com", label: "Email" },
+];
+
+const ACCOMPLISHMENTS = [
+  { icon: Flame, label: "Full Ironman Finisher" },
+  { icon: Waves, label: "Multiple Half Ironman Finisher" },
+  { icon: Waves, label: "Swam Alcatraz to SF" },
+  { icon: Mountain, label: "Amateur Mountain Climber" },
+  { icon: Swords, label: "Former MMA Practitioner" },
 ];
 
 const PILLS = [
@@ -52,6 +60,13 @@ const Cursor = () => (
 
 const DEFAULT_PROFILE_IMAGE = "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/d2e2a7bd6_LinkedIn.png";
 
+const BODY_STYLE = {
+  fontFamily: "var(--font-inter)",
+  fontSize: "1.0625rem",
+  lineHeight: "1.85",
+  fontWeight: 400,
+};
+
 export default function HeroContent() {
   const typedHeadline = useTypewriter(
     "I build and ship products across AI, connected hardware, and real-world operations.",
@@ -61,7 +76,7 @@ export default function HeroContent() {
 
   const container = {
     hidden: {},
-    show: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
+    show: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
   };
   const item = {
     hidden: { opacity: 0, y: 16 },
@@ -107,11 +122,8 @@ export default function HeroContent() {
           </span>
         </motion.h2>
 
-        <motion.p
-          variants={item}
-          className="font-inter text-white/60 leading-relaxed mb-6"
-          style={{ fontSize: "clamp(1rem, 1.5vw, 1.125rem)" }}
-        >
+        {/* Body paragraphs — consistent typography */}
+        <motion.p variants={item} className="text-white/60 mb-5" style={BODY_STYLE}>
           I'm Rahul Rachamalla, an engineer by training and product builder by profession. I've spent the last decade
           building conversational AI, connected vehicle experiences, edge infrastructure, enterprise networking,
           IoT systems, and cloud-device platforms at{" "}
@@ -121,16 +133,13 @@ export default function HeroContent() {
           <span className="text-violet-400 font-medium">Ericsson</span>.
         </motion.p>
 
-        <motion.p
-          variants={item}
-          className="font-inter text-white/40 leading-relaxed mb-8"
-          style={{ fontSize: "clamp(0.9rem, 1.3vw, 1rem)" }}
-        >
+        <motion.p variants={item} className="text-white/55 mb-8" style={BODY_STYLE}>
           Today, I'm focused on physical AI, autonomous systems, telemetry, and field operations automation
           through <span className="text-violet-400 font-medium">Copa Labs</span> and other experimental hardware/software projects.
         </motion.p>
 
-        <motion.div variants={item} className="flex items-center gap-5 mb-10">
+        {/* Social + CTAs */}
+        <motion.div variants={item} className="flex items-center gap-5 mb-8">
           {SOCIALS.map(({ Icon, href, label }) => (
             <motion.a
               key={label}
@@ -146,7 +155,7 @@ export default function HeroContent() {
           ))}
         </motion.div>
 
-        <motion.div variants={item} className="flex items-center gap-6 flex-wrap mb-10">
+        <motion.div variants={item} className="flex items-center gap-6 flex-wrap mb-12">
           <a
             href="#contact"
             className="font-mono text-sm px-7 py-3.5 rounded border border-violet-400 text-violet-400 hover:bg-violet-400/10 transition-all duration-200 tracking-wide"
@@ -161,33 +170,38 @@ export default function HeroContent() {
           </a>
         </motion.div>
 
-        {/* Endurance line — prominent */}
-        <motion.div
-          variants={item}
-          className="mb-10 px-5 py-4 rounded-xl border border-white/10 bg-white/3 inline-flex flex-wrap gap-x-3 gap-y-1 items-center"
-          style={{ maxWidth: "fit-content" }}
-        >
-          {[
-            "Full Ironman Finisher",
-            "Multiple Half Ironman Finisher",
-            "Swam Alcatraz to San Francisco",
-            "Amateur Mountain Climber",
-            "Former MMA Practitioner",
-          ].map((item, i, arr) => (
-            <span key={i} className="font-mono text-white/60 tracking-wide" style={{ fontSize: "0.8rem" }}>
-              {item}
-              {i < arr.length - 1 && <span className="ml-3 text-violet-400/50">•</span>}
-            </span>
-          ))}
+        {/* Accomplishment cards */}
+        <motion.div variants={item}>
+          <p className="font-mono text-white/30 text-xs tracking-widest uppercase mb-4">Beyond Work</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
+            {ACCOMPLISHMENTS.map(({ icon: Icon, label }, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 1.2 + i * 0.08 }}
+                className="group flex flex-col items-center gap-3 px-4 py-5 rounded-xl border border-white/8 bg-white/3 backdrop-blur-sm hover:border-violet-400/35 hover:bg-violet-400/6 transition-all duration-300 cursor-default text-center"
+                style={{ boxShadow: "0 0 0 0 rgba(167,139,250,0)" }}
+                whileHover={{ boxShadow: "0 0 20px rgba(167,139,250,0.08)" }}
+              >
+                <div className="w-9 h-9 rounded-lg bg-violet-400/12 border border-violet-400/20 flex items-center justify-center group-hover:bg-violet-400/20 transition-colors">
+                  <Icon className="w-4 h-4 text-violet-400" />
+                </div>
+                <span className="font-inter text-white/70 leading-snug group-hover:text-white/90 transition-colors" style={{ fontSize: "0.85rem" }}>
+                  {label}
+                </span>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
-        {/* Pills — secondary */}
-        <motion.div variants={item} className="flex flex-wrap gap-2">
+        {/* Pills — clearly secondary, below accomplishments */}
+        <motion.div variants={item} className="flex flex-wrap gap-2 mt-8">
           {PILLS.map((pill) => (
             <span
               key={pill}
-              className="font-mono tracking-wide px-3 py-1.5 rounded-full bg-violet-400/8 border border-violet-400/20 text-violet-300/60"
-              style={{ fontSize: "0.75rem" }}
+              className="font-mono tracking-wide px-3 py-1.5 rounded-full bg-violet-400/6 border border-violet-400/15 text-violet-300/50"
+              style={{ fontSize: "0.72rem" }}
             >
               {pill}
             </span>
@@ -207,9 +221,7 @@ export default function HeroContent() {
       >
         <div
           className="relative w-80 h-96 xl:w-[26rem] xl:h-[30rem] rounded-2xl overflow-hidden"
-          style={{
-            boxShadow: "0 0 0 1px rgba(167,139,250,0.15), 0 32px 64px rgba(0,0,0,0.5)",
-          }}
+          style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.15), 0 32px 64px rgba(0,0,0,0.5)" }}
         >
           <div className="absolute -inset-4 rounded-3xl bg-violet-500/10 blur-2xl -z-10" />
           <img
