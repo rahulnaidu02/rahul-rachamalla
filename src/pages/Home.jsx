@@ -11,6 +11,7 @@ import MountainsSection from "../components/sections/MountainsSection";
 import HardwareSection from "../components/sections/HardwareSection";
 import GitHubSection from "../components/sections/GitHubSection";
 import MMASection from "../components/sections/MMASection";
+import SubstackSection from "../components/sections/SubstackSection";
 import ContactSection from "../components/sections/ContactSection";
 
 const DEFAULT_PROFILE_IMAGE = "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/d2e2a7bd6_LinkedIn.png";
@@ -25,6 +26,7 @@ export const NAV_ITEMS = [
   { id: "hardware", label: "Hardware" },
   { id: "github", label: "GitHub" },
   { id: "mma", label: "MMA" },
+  { id: "substack", label: "Substack" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -180,6 +182,13 @@ export default function Home() {
           <section ref={(el) => (sectionRefs.current["mma"] = el)} id="mma">
             <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.65, ease: "easeOut" }}>
               <MMASection />
+            </motion.div>
+          </section>
+
+          {/* Substack */}
+          <section ref={(el) => (sectionRefs.current["substack"] = el)} id="substack">
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.65, ease: "easeOut" }}>
+              <SubstackSection />
             </motion.div>
           </section>
 

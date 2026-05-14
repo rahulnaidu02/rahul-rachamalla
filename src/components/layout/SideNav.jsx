@@ -18,6 +18,7 @@ const NAV_ITEMS = [
   { id: "hardware", label: "Hardware" },
   { id: "github", label: "GitHub" },
   { id: "mma", label: "MMA" },
+  { id: "substack", label: "Substack" },
   { id: "contact", label: "Contact" },
 ];
 
