@@ -10,7 +10,7 @@ import HardwareTab from "../components/tabs/HardwareTab";
 import GitHubTab from "../components/tabs/GitHubTab";
 import ContactTab from "../components/tabs/ContactTab";
 
-const PROFILE_IMAGE = "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/f2a0b5939_generated_image.png";
+const PROFILE_IMAGE = "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/d2e2a7bd6_LinkedIn.png";
 
 const TAB_COMPONENTS = {
   about: <AboutTab />,
@@ -40,7 +40,7 @@ export default function Home() {
         <div className="mt-20 pt-8 border-t border-border">
           <p className="font-inter text-xs text-[#A0A0A0] text-center">
             Built with ☕ and way too much solder —{" "}
-            <span className="text-primary">Your Name</span> © {new Date().getFullYear()}
+            <span className="text-primary">Rahul Rachamalla</span> © {new Date().getFullYear()}
           </p>
         </div>
       </div>

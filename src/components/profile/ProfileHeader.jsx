@@ -37,7 +37,7 @@ export default function ProfileHeader({ profileImage }) {
       {/* Name, bio, links */}
       <div className="flex-1 min-w-0">
         <h1 className="font-syne text-2xl sm:text-3xl font-bold text-foreground mb-1">
-          Your Name
+          Rahul Rachamalla
         </h1>
         <p className="font-inter text-base text-[#A0A0A0] mb-3 leading-relaxed">
           Hardware & software engineer. Ironman finisher. Mountain climber.{" "}
