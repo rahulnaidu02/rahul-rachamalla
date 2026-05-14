@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import SideNav from "../components/layout/SideNav";
 import HeroContent from "../components/sections/HeroContent.jsx";
 import AboutSection from "../components/sections/AboutSection.jsx";
@@ -32,6 +33,43 @@ export default function Home() {
   const [profileImage, setProfileImage] = useState(DEFAULT_PROFILE_IMAGE);
 
   const sectionRefs = useRef({});
+  const observerRef = useRef(null);
+
+  // IntersectionObserver — mirrors Brittany Chiang's approach:
+  // whichever section covers the most of the viewport wins.
+  useEffect(() => {
+    const ids = NAV_ITEMS.map((n) => n.id);
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        // Find the entry with the largest intersection ratio that is currently intersecting
+        let best = null;
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (!best || entry.intersectionRatio > best.intersectionRatio) {
+              best = entry;
+            }
+          }
+        });
+        if (best) {
+          setActiveSection(best.target.id);
+        }
+      },
+      {
+        // Trigger when at least 20% of a section is visible
+        threshold: [0.1, 0.2, 0.3, 0.5],
+        // Shrink the root margin so sections near the center of the screen win
+        rootMargin: "-10% 0px -55% 0px",
+      }
+    );
+
+    ids.forEach((id) => {
+      const el = sectionRefs.current[id];
+      if (el) observerRef.current.observe(el);
+    });
+
+    return () => observerRef.current?.disconnect();
+  }, []);
 
   const scrollTo = (id) => {
     sectionRefs.current[id]?.scrollIntoView({ behavior: "smooth" });
@@ -76,7 +114,7 @@ export default function Home() {
           `
         }} />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-8 lg:px-12 pt-24 lg:pt-24 pb-24 space-y-28">
+        <div className="relative z-10 max-w-5xl mx-auto px-8 lg:px-12 pt-24 lg:pt-24 pb-24 space-y-36">
           {/* Hero */}
           <section ref={(el) => (sectionRefs.current["hero"] = el)}>
             <HeroContent />
@@ -84,52 +122,72 @@ export default function Home() {
 
           {/* About */}
           <section ref={(el) => (sectionRefs.current["about"] = el)} id="about">
-            <AboutSection />
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.15 }} transition={{ duration: 0.65, ease: "easeOut" }}>
+              <AboutSection />
+            </motion.div>
           </section>
 
           {/* Experience */}
           <section ref={(el) => (sectionRefs.current["experience"] = el)} id="experience">
-            <ExperienceSection />
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.65, ease: "easeOut" }}>
+              <ExperienceSection />
+            </motion.div>
           </section>
 
           {/* Founder & Builder */}
           <section ref={(el) => (sectionRefs.current["founder"] = el)} id="founder">
-            <FounderSection />
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.65, ease: "easeOut" }}>
+              <FounderSection />
+            </motion.div>
           </section>
 
           {/* AI Projects */}
           <section ref={(el) => (sectionRefs.current["projects"] = el)} id="projects">
-            <ProjectsSection />
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.65, ease: "easeOut" }}>
+              <ProjectsSection />
+            </motion.div>
           </section>
 
           {/* Ironman */}
           <section ref={(el) => (sectionRefs.current["ironman"] = el)} id="ironman">
-            <IronmanSection />
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.65, ease: "easeOut" }}>
+              <IronmanSection />
+            </motion.div>
           </section>
 
           {/* Mountains */}
           <section ref={(el) => (sectionRefs.current["mountains"] = el)} id="mountains">
-            <MountainsSection />
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.65, ease: "easeOut" }}>
+              <MountainsSection />
+            </motion.div>
           </section>
 
           {/* Hardware */}
           <section ref={(el) => (sectionRefs.current["hardware"] = el)} id="hardware">
-            <HardwareSection />
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.65, ease: "easeOut" }}>
+              <HardwareSection />
+            </motion.div>
           </section>
 
           {/* GitHub */}
           <section ref={(el) => (sectionRefs.current["github"] = el)} id="github">
-            <GitHubSection />
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.65, ease: "easeOut" }}>
+              <GitHubSection />
+            </motion.div>
           </section>
 
           {/* MMA */}
           <section ref={(el) => (sectionRefs.current["mma"] = el)} id="mma">
-            <MMASection />
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.65, ease: "easeOut" }}>
+              <MMASection />
+            </motion.div>
           </section>
 
           {/* Contact */}
           <section ref={(el) => (sectionRefs.current["contact"] = el)} id="contact">
-            <ContactSection />
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.65, ease: "easeOut" }}>
+              <ContactSection />
+            </motion.div>
           </section>
 
           {/* Footer */}

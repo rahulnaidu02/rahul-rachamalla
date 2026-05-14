@@ -68,30 +68,43 @@ export default function SideNav({ activeSection, onNavClick, profileImage, onIma
           </p>
 
           {/* Nav — Brittany style: line grows on active */}
-          <nav className="flex flex-col gap-1">
+          <nav className="flex flex-col gap-0.5">
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.id;
               return (
                 <button
                   key={item.id}
                   onClick={() => onNavClick(item.id)}
-                  className="group flex items-center gap-4 py-2 text-left w-full"
+                  className="group flex items-center gap-4 py-2.5 px-3 rounded-lg text-left w-full transition-all duration-300"
+                  style={{
+                    background: isActive ? "rgba(167,139,250,0.1)" : "transparent",
+                  }}
                 >
                   <span
-                    className="block h-px transition-all duration-300"
+                    className="block h-px flex-shrink-0 transition-all duration-300"
                     style={{
-                      width: isActive ? "48px" : "24px",
+                      width: isActive ? "56px" : "24px",
                       background: isActive
-                        ? "linear-gradient(90deg,#a78bfa,#67e8f9)"
-                        : "rgba(255,255,255,0.2)",
+                        ? "linear-gradient(90deg, #a78bfa, #67e8f9)"
+                        : "rgba(255,255,255,0.18)",
                     }}
                   />
                   <span
-                    className="font-mono text-sm tracking-widest uppercase transition-colors duration-200"
-                    style={{ color: isActive ? "#e2e8f0" : "rgba(255,255,255,0.35)" }}
+                    className="font-mono text-sm tracking-widest uppercase transition-all duration-200"
+                    style={{
+                      color: isActive ? "#c4b5fd" : "rgba(255,255,255,0.32)",
+                      fontWeight: isActive ? 700 : 400,
+                      letterSpacing: isActive ? "0.12em" : "0.1em",
+                    }}
                   >
                     {item.label}
                   </span>
+                  {isActive && (
+                    <span
+                      className="ml-auto block w-1.5 h-1.5 rounded-full flex-shrink-0"
+                      style={{ background: "linear-gradient(135deg, #a78bfa, #67e8f9)", boxShadow: "0 0 6px rgba(167,139,250,0.8)" }}
+                    />
+                  )}
                 </button>
               );
             })}
