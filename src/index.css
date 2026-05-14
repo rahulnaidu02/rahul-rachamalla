@@ -10,9 +10,9 @@
     --font-inter: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
 
-    --background: 220 14% 4%;
+    --background: 228 30% 7%;
     --foreground: 0 0% 95%;
-    --card: 220 12% 8%;
+    --card: 228 25% 10%;
     --card-foreground: 0 0% 95%;
     --popover: 220 12% 8%;
     --popover-foreground: 0 0% 95%;
@@ -46,9 +46,9 @@
   }
 
   .dark {
-    --background: 220 14% 4%;
+    --background: 228 30% 7%;
     --foreground: 0 0% 95%;
-    --card: 220 12% 8%;
+    --card: 228 25% 10%;
     --card-foreground: 0 0% 95%;
     --popover: 220 12% 8%;
     --popover-foreground: 0 0% 95%;
