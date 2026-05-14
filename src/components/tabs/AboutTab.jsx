@@ -8,7 +8,7 @@ const fadeUp = (delay = 0) => ({
 
 export default function AboutTab() {
   return (
-    <div className="max-w-2xl space-y-8">
+    <div className="space-y-8">
       <motion.div {...fadeUp(0)}>
         <h2 className="font-syne text-lg font-bold text-foreground mb-3">
           👋 Hey, I'm [Your Name]

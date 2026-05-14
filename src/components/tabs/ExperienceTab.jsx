@@ -45,7 +45,7 @@ const EDUCATION = [
 
 export default function ExperienceTab() {
   return (
-    <div className="max-w-2xl space-y-10">
+    <div className="space-y-10">
       <div>
         <h2 className="font-syne text-lg font-bold text-foreground mb-6">Work</h2>
         <div className="space-y-8">

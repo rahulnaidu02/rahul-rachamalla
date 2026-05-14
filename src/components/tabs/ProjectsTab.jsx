@@ -52,7 +52,7 @@ const STATUS_COLOR = {
 
 export default function ProjectsTab() {
   return (
-    <div className="max-w-2xl">
+    <div>
       <div className="flex items-center justify-between mb-6">
         <h2 className="font-syne text-lg font-bold text-foreground">Projects</h2>
         <a

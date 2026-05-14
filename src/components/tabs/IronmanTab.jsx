@@ -36,7 +36,7 @@ const Stat = ({ label, value }) => (
 
 export default function IronmanTab() {
   return (
-    <div className="max-w-2xl space-y-10">
+    <div className="space-y-10">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
