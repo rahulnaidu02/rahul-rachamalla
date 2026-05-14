@@ -17,31 +17,27 @@ const PROJECTS = [
     flagship: true,
   },
   {
+    type: "copa-fleet-group",
+    images: [
+      "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/a19fab8b5_Screenshot2026-05-13062833.png",
+      "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/38928a944_Screenshot2026-05-13063023.png",
+    ],
     title: "COPA Fleet Command Center",
     subtitle: "Fleet Operations Dashboard",
     description:
-      "Real-time fleet overview showing active units, service alerts, at-risk units, and unacknowledged alerts across all deployed sanitation units.",
-    image: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/a19fab8b5_Screenshot2026-05-13062833.png",
-    tags: ["Fleet Ops", "Telemetry", "Alerts", "IoT Dashboard"],
-    isCopaFleet: true,
-    isCopaFleetFirst: true,
+      "Real-time fleet overview showing active units, service alerts, at-risk units, unacknowledged alerts, and per-unit drill-downs with water system, waste levels, battery, hardware health, door/lock/occupancy sensors, GPS, and connectivity status.",
+    tags: ["Fleet Ops", "Telemetry", "Alerts", "IoT Dashboard", "Sensors", "Access Control", "Real-Time"],
+    link: "https://copa-fleet-command-center.base44.app",
   },
   {
-    title: "COPA Unit Detail View",
-    subtitle: "Unit Snapshot, Sensors & Access Control",
-    description:
-      "Per-unit drill-down with water system, waste levels, battery, hardware health, door/lock/occupancy sensors, GPS, and connectivity status.",
-    image: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/38928a944_Screenshot2026-05-13063023.png",
-    tags: ["Sensors", "Access Control", "Hardware Health", "Real-Time"],
-    isCopaFleet: true,
-    isCopaFleetLast: true,
-  },
-  {
+    type: "so101",
     title: "SO101 Open Source Robotics Arm",
     subtitle: "Robotic Automation Experiments",
     description:
       "Experiments with low-cost open-source robotic arm workflows for future physical AI, autonomous servicing, and hardware automation projects.",
     tags: ["Robotics", "Automation", "Embedded Systems", "Physical AI", "Open Source"],
+    video: "https://media.base44.com/videos/public/6a061760231cbb0e0f2caa6b/913f37782_CopaGIFSelfCleaningPrototypeearlystage.mp4",
+    image: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/364eb1e61_RoboticArm.png",
     buttons: [
       { label: "View Project", href: "#" },
       { label: "GitHub", href: "#" },
@@ -109,7 +105,7 @@ const PROJECTS = [
   },
 ];
 
-function MediaPlaceholder({ flagship }) {
+function MediaPlaceholder({ flagship, heroImage }) {
   if (flagship) {
     return (
       <div className="w-full border-b border-white/6 overflow-hidden">
@@ -118,6 +114,13 @@ function MediaPlaceholder({ flagship }) {
           alt="Method Flow: COPA Autonomous Sanitation System"
           className="w-full object-contain bg-white"
         />
+      </div>
+    );
+  }
+  if (heroImage) {
+    return (
+      <div className="w-full border-b border-white/6 overflow-hidden h-64 lg:h-80">
+        <img src={heroImage} alt="Project visual" className="w-full h-full object-cover object-center" />
       </div>
     );
   }
@@ -158,39 +161,112 @@ function ProjectButton({ label, href }) {
   );
 }
 
-function CopaFleetCard({ project }) {
-  const { title, subtitle, description, tags, image } = project;
+function CopaFleetGroup({ project, index }) {
   return (
-    <div className="flex flex-col">
-      <div className="border-b border-white/8 overflow-hidden">
-        <img src={image} alt={title} className="w-full object-cover object-top" />
-      </div>
-      <div className="p-6 flex flex-col gap-4">
+    <motion.div
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay: index * 0.06, ease: "easeOut" }}
+      className="rounded-2xl border border-violet-400/20 bg-white/2 overflow-hidden"
+      style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.10), 0 4px 24px rgba(139,92,246,0.08)" }}
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between px-8 py-5 border-b border-violet-400/15 bg-violet-400/4 flex-wrap gap-3">
         <div>
-          <p className="font-mono text-violet-400/70 tracking-wider uppercase mb-1" style={{ fontSize: "0.8rem" }}>
-            {subtitle}
-          </p>
-          <h3 className="font-syne font-bold text-white leading-tight" style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.4rem)" }}>
-            {title}
-          </h3>
+          <p className="font-mono text-violet-400/60 tracking-widest uppercase mb-0.5" style={{ fontSize: "0.72rem" }}>Live Product</p>
+          <h3 className="font-syne font-bold text-white" style={{ fontSize: "clamp(1.1rem, 2vw, 1.5rem)" }}>{project.title}</h3>
         </div>
-        <p className="font-inter text-white/55 leading-[1.8]" style={{ fontSize: "0.9875rem" }}>
-          {description}
-        </p>
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 font-inter font-medium px-5 py-2.5 rounded-lg border border-violet-400/50 text-violet-300 hover:bg-violet-400/12 hover:border-violet-400/80 hover:text-violet-200 transition-all duration-200 flex-shrink-0"
+          style={{ fontSize: "0.9rem" }}
+        >
+          Check out more on this website <ExternalLink className="w-3.5 h-3.5 opacity-60" />
+        </a>
+      </div>
+      {/* Two screenshots — same height, side by side */}
+      <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/8">
+        {project.images.map((src, i) => (
+          <div key={i} className="overflow-hidden" style={{ height: "280px" }}>
+            <img src={src} alt={`${project.title} screenshot ${i + 1}`} className="w-full h-full object-cover object-top" />
+          </div>
+        ))}
+      </div>
+      {/* Shared description below */}
+      <div className="p-8 flex flex-col gap-4 border-t border-white/6">
+        <p className="font-mono text-violet-400/70 tracking-wider uppercase" style={{ fontSize: "0.8rem" }}>{project.subtitle}</p>
+        <p className="font-inter text-white/58 leading-[1.85]" style={{ fontSize: "1.0625rem" }}>{project.description}</p>
         <div className="flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <span key={tag} className="font-inter tracking-wide px-3 py-1 rounded-full border bg-violet-400/7 border-violet-400/15 text-violet-300/65" style={{ fontSize: "0.8rem" }}>
+          {project.tags.map((tag) => (
+            <span key={tag} className="font-inter tracking-wide px-3.5 py-1.5 rounded-full border bg-violet-400/7 border-violet-400/15 text-violet-300/65" style={{ fontSize: "0.875rem" }}>
               {tag}
             </span>
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
+  );
+}
+
+function SO101Card({ project, index }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay: index * 0.06, ease: "easeOut" }}
+      className="rounded-2xl border border-violet-400/20 bg-white/2 overflow-hidden"
+      style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.10), 0 4px 24px rgba(139,92,246,0.08)" }}
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between px-8 py-5 border-b border-violet-400/15 bg-violet-400/4 flex-wrap gap-3">
+        <div>
+          <p className="font-mono text-violet-400/60 tracking-widest uppercase mb-0.5" style={{ fontSize: "0.72rem" }}>Robotic Automation</p>
+          <h3 className="font-syne font-bold text-white" style={{ fontSize: "clamp(1.1rem, 2vw, 1.5rem)" }}>{project.title}</h3>
+        </div>
+      </div>
+      {/* Video GIF on top, then static image */}
+      <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/8">
+        <div className="overflow-hidden" style={{ height: "280px" }}>
+          <video
+            src={project.video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="overflow-hidden" style={{ height: "280px" }}>
+          <img src={project.image} alt="SO101 Robotic Arm" className="w-full h-full object-cover object-center" />
+        </div>
+      </div>
+      {/* Description below */}
+      <div className="p-8 flex flex-col gap-4 border-t border-white/6">
+        <p className="font-mono text-violet-400/70 tracking-wider uppercase" style={{ fontSize: "0.8rem" }}>{project.subtitle}</p>
+        <p className="font-inter text-white/58 leading-[1.85]" style={{ fontSize: "1.0625rem" }}>{project.description}</p>
+        <div className="flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <span key={tag} className="font-inter tracking-wide px-3.5 py-1.5 rounded-full border bg-violet-400/7 border-violet-400/15 text-violet-300/65" style={{ fontSize: "0.875rem" }}>
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-3 pt-1">
+          {project.buttons.map((btn) => (
+            <ProjectButton key={btn.label} label={btn.label} href={btn.href} />
+          ))}
+        </div>
+      </div>
+    </motion.div>
   );
 }
 
 function ProjectCard({ project, index }) {
-  const { title, subtitle, description, tags, buttons, badge, flagship } = project;
+  const { title, subtitle, description, tags, buttons, badge, flagship, heroImage } = project;
 
   return (
     <motion.div
@@ -218,7 +294,7 @@ function ProjectCard({ project, index }) {
           style={{ background: "linear-gradient(135deg, rgba(139,92,246,0.08) 0%, transparent 60%)" }} />
       )}
 
-      <MediaPlaceholder flagship={flagship} />
+      <MediaPlaceholder flagship={flagship} heroImage={heroImage} />
 
       <div className="p-8 lg:p-10 flex flex-col gap-5">
         {/* USPTO badge — prominently placed below image, no overlap */}
@@ -293,60 +369,11 @@ export default function ProjectsSection() {
       </p>
 
       <div className="flex flex-col gap-6">
-        {(() => {
-          const rendered = [];
-          let i = 0;
-          while (i < PROJECTS.length) {
-            const p = PROJECTS[i];
-            if (p.isCopaFleetFirst) {
-              // Find the pair
-              const pair = [p, PROJECTS[i + 1]].filter(Boolean);
-              rendered.push(
-                <motion.div
-                  key="copa-fleet-group"
-                  initial={{ opacity: 0, y: 28 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.5, delay: i * 0.06, ease: "easeOut" }}
-                  className="rounded-2xl border border-violet-400/20 bg-white/2 overflow-hidden"
-                  style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.10), 0 4px 24px rgba(139,92,246,0.08)" }}
-                >
-                  {/* Group header */}
-                  <div className="flex items-center justify-between px-8 py-5 border-b border-violet-400/15 bg-violet-400/4">
-                    <div>
-                      <p className="font-mono text-violet-400/60 tracking-widest uppercase mb-0.5" style={{ fontSize: "0.72rem" }}>Live Product</p>
-                      <h3 className="font-syne font-bold text-white" style={{ fontSize: "clamp(1.1rem, 2vw, 1.5rem)" }}>
-                        COPA Autonomous Sanitation System
-                      </h3>
-                    </div>
-                    <a
-                      href="https://copa-fleet-command-center.base44.app"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 font-inter font-medium px-5 py-2.5 rounded-lg border border-violet-400/50 text-violet-300 hover:bg-violet-400/12 hover:border-violet-400/80 hover:text-violet-200 transition-all duration-200 flex-shrink-0"
-                      style={{ fontSize: "0.9rem" }}
-                    >
-                      Check out more on this website <ExternalLink className="w-3.5 h-3.5 opacity-60" />
-                    </a>
-                  </div>
-                  {/* Two dashboard cards side by side */}
-                  <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/8">
-                    {pair.map((card) => (
-                      <CopaFleetCard key={card.title} project={card} />
-                    ))}
-                  </div>
-                </motion.div>
-              );
-              i += 2;
-            } else if (p.isCopaFleet) {
-              i++;
-            } else {
-              rendered.push(<ProjectCard key={i} project={p} index={i} />);
-              i++;
-            }
-          }
-          return rendered;
-        })()}
+        {PROJECTS.map((p, i) => {
+          if (p.type === "copa-fleet-group") return <CopaFleetGroup key={i} project={p} index={i} />;
+          if (p.type === "so101") return <SO101Card key={i} project={p} index={i} />;
+          return <ProjectCard key={i} project={p} index={i} />;
+        })}
       </div>
     </motion.div>
   );
