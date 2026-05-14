@@ -295,10 +295,8 @@ function ProjectCard({ project, index, cardNumber }) {
     >
 
 
-      <MediaPlaceholder flagship={flagship} heroImage={heroImage} />
-
       <div className="p-8 lg:p-10 flex flex-col gap-5">
-        {/* USPTO badge — prominently placed below image, no overlap */}
+        {/* USPTO badge and title — positioned above image for flagship */}
         {badge && (
           <div className="flex items-center gap-3 px-5 py-3 rounded-xl border border-amber-400/60 bg-amber-400/10"
             style={{ boxShadow: "0 0 16px rgba(251,191,36,0.15)" }}>
@@ -323,6 +321,11 @@ function ProjectCard({ project, index, cardNumber }) {
             {title}
           </h3>
         </div>
+      </div>
+
+      <MediaPlaceholder flagship={flagship} heroImage={heroImage} />
+
+      <div className="p-8 lg:p-10 flex flex-col gap-5">
 
         <p className="font-inter text-white/58 leading-[1.85]" style={{ fontSize: "1.0625rem" }}>
           {flagship
