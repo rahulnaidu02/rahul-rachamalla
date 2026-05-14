@@ -121,7 +121,7 @@ export default function MMASection() {
 
       {/* Mount Rushmore */}
       <div className="mb-16">
-        <h3 className="font-syne font-bold text-white text-2xl mb-2">MMA Mount Rushmore</h3>
+        <h3 className="font-syne font-bold text-white text-2xl mb-2">MMA Mount Rushmore (in my opinion)</h3>
         <p className="font-inter text-white/45 mb-8" style={{ fontSize: "1rem" }}>The five who defined the sport for me.</p>
 
         <div className="rounded-2xl overflow-hidden border border-white/10 mb-8">
@@ -154,7 +154,7 @@ export default function MMASection() {
 
       {/* Best Finishes */}
       <div>
-        <h3 className="font-syne font-bold text-white text-2xl mb-2">Greatest Finishes Ever</h3>
+        <h3 className="font-syne font-bold text-white text-2xl mb-2">Greatest Finishes Ever (in my opinion)</h3>
         <p className="font-inter text-white/45 mb-8" style={{ fontSize: "1rem" }}>Moments that redefined what was possible.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
