@@ -58,7 +58,7 @@ const Cursor = () => (
   />
 );
 
-const DEFAULT_PROFILE_IMAGE = "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/d2e2a7bd6_LinkedIn.png";
+const DEFAULT_PROFILE_IMAGE = "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/43093a14f_Screenshot2025-10-05144427.png";
 
 const BODY_STYLE = {
   fontFamily: "var(--font-inter)",
