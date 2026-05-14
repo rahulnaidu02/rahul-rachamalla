@@ -49,9 +49,14 @@ export default function Home() {
       {/* Scrollable right content */}
       <main className="flex-1 lg:ml-80 xl:ml-96">
         {/* Cursor-following gradient glow (static decorative) */}
-        <div className="fixed top-0 right-0 w-[600px] h-[600px] pointer-events-none z-0"
-          style={{ background: "radial-gradient(ellipse at 80% 20%, rgba(99,102,241,0.12) 0%, rgba(139,92,246,0.06) 40%, transparent 70%)" }}
-        />
+        {/* Nebula background — subtle purple-gray */}
+        <div className="fixed inset-0 pointer-events-none z-0" style={{
+          background: `
+            radial-gradient(ellipse 80% 60% at 70% 10%, rgba(139,92,246,0.10) 0%, transparent 60%),
+            radial-gradient(ellipse 50% 40% at 20% 80%, rgba(99,102,241,0.07) 0%, transparent 55%),
+            radial-gradient(ellipse 60% 50% at 90% 70%, rgba(56,189,248,0.05) 0%, transparent 50%)
+          `
+        }} />
 
         <div className="relative z-10 max-w-3xl mx-auto px-6 lg:px-12 pt-24 lg:pt-24 pb-24 space-y-40">
           {/* Hero */}
