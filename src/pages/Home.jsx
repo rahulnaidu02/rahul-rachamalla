@@ -8,7 +8,7 @@ import ProjectsSection from "../components/sections/ProjectsSection";
 import FounderSection from "../components/sections/FounderSection";
 import IronmanSection from "../components/sections/IronmanSection";
 import MountainsSection from "../components/sections/MountainsSection";
-import HardwareSection from "../components/sections/HardwareSection";
+
 import GitHubSection from "../components/sections/GitHubSection";
 import MMASection from "../components/sections/MMASection";
 import SubstackSection from "../components/sections/SubstackSection";
@@ -23,7 +23,6 @@ export const NAV_ITEMS = [
   { id: "projects", label: "AI Projects" },
   { id: "ironman", label: "Ironman" },
   { id: "mountains", label: "Mountains" },
-  { id: "hardware", label: "Hardware" },
   { id: "github", label: "GitHub" },
   { id: "mma", label: "MMA" },
   { id: "substack", label: "Substack" },
@@ -107,7 +106,7 @@ export default function Home() {
       <main className="flex-1 lg:ml-80 xl:ml-96 2xl:ml-96">
         {/* GitHub badge — top right */}
         <a
-          href="https://github.com/rahulrachamalla"
+          href="https://github.com/rahulnaidu02"
           target="_blank"
           rel="noopener noreferrer"
           className="fixed top-5 right-6 z-40 hidden lg:flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/20 bg-white/8 backdrop-blur-sm hover:border-white/40 hover:bg-white/14 transition-all duration-200 group shadow-lg"
@@ -179,14 +178,7 @@ export default function Home() {
             </motion.div>
           </section>
 
-          {/* Hardware */}
-          <section ref={(el) => (sectionRefs.current["hardware"] = el)} id="hardware">
-            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.65, ease: "easeOut" }}>
-              <HardwareSection />
-            </motion.div>
-          </section>
-
-          {/* GitHub */}
+            {/* GitHub */}
           <section ref={(el) => (sectionRefs.current["github"] = el)} id="github">
             <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.65, ease: "easeOut" }}>
               <GitHubSection />

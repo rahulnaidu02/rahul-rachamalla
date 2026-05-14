@@ -9,8 +9,8 @@ const SubstackIcon = () => (
 );
 
 const SOCIALS = [
-  { Icon: Github, href: "https://github.com/rahulrachamalla", label: "GitHub" },
-  { Icon: Linkedin, href: "https://linkedin.com/in/rahulrachamalla", label: "LinkedIn" },
+  { Icon: Github, href: "https://github.com/rahulnaidu02", label: "GitHub" },
+  { Icon: Linkedin, href: "https://www.linkedin.com/in/rahulrachamalla/", label: "LinkedIn" },
   { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
   { Icon: SubstackIcon, href: "https://substack.com", label: "Substack" },
   { Icon: Mail, href: "mailto:rahul@example.com", label: "Email" },

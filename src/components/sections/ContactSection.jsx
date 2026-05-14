@@ -10,8 +10,8 @@ const SUBSTACK_ICON = () => (
 
 const CHANNELS = [
   { icon: Mail, label: "Email", handle: "rahul@example.com", href: "mailto:rahul@example.com", desc: "Best for direct outreach" },
-  { icon: Linkedin, label: "LinkedIn", handle: "/in/rahulrachamalla", href: "https://linkedin.com/in/rahulrachamalla", desc: "Professional updates" },
-  { icon: Github, label: "GitHub", handle: "github.com/rahulrachamalla", href: "https://github.com/rahulrachamalla", desc: "Code & projects" },
+  { icon: Linkedin, label: "LinkedIn", handle: "/in/rahulrachamalla", href: "https://www.linkedin.com/in/rahulrachamalla/", desc: "Professional updates" },
+  { icon: Github, label: "GitHub", handle: "github.com/rahulnaidu02", href: "https://github.com/rahulnaidu02", desc: "Code & projects" },
   { icon: SUBSTACK_ICON, label: "Substack", handle: "Notes on hardware & endurance", href: "https://substack.com", desc: "Writing" },
 ];
 
