@@ -43,15 +43,16 @@ const PROJECTS = [
     ],
   },
   {
+    type: "copa-fleet-group",
+    images: [
+      "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/e9af8f4e2_Screenshot2026-05-13063023.png",
+    ],
     title: "COPA Fleet Telemetry Dashboard",
     subtitle: "Operator Fleet Operations Platform",
     description:
       "Dashboard for monitoring sanitation units across battery health, water levels, usage telemetry, lock state, tamper alerts, service workflows, and fleet visibility.",
     tags: ["React", "IoT Dashboard", "Fleet Ops", "Telemetry", "Alerts"],
-    buttons: [
-      { label: "View Demo", href: "#" },
-      { label: "GitHub", href: "#" },
-    ],
+    link: "https://copa-fleet-command-center.base44.app",
   },
   {
     title: "Live Translation Screen System",
