@@ -3,7 +3,7 @@ import SideNav from "../components/layout/SideNav";
 import HeroContent from "../components/sections/HeroContent.jsx";
 import AboutSection from "../components/sections/AboutSection.jsx";
 import ExperienceSection from "../components/sections/ExperienceSection.jsx";
-import ProjectsSection from "../components/sections/ProjectsSection.jsx";
+import ProjectsSection from "../components/sections/ProjectsSection";
 import IronmanSection from "../components/sections/IronmanSection";
 import MountainsSection from "../components/sections/MountainsSection";
 import HardwareSection from "../components/sections/HardwareSection";
