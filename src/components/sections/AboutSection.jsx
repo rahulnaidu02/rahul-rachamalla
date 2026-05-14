@@ -16,31 +16,21 @@ export default function AboutSection() {
       <div className="grid lg:grid-cols-5 gap-10">
         <div className="lg:col-span-3 space-y-4 font-inter text-white/60 leading-relaxed text-sm">
           <p>
-            I'm an engineer who can't sit still. By day I design hardware and write embedded firmware.
-            By weekend I'm either on a mountain, crossing an Ironman finish line, or getting choked out on a BJJ mat.
+            I'm a technical product builder focused on systems where software, hardware, AI, and real-world operations meet.
           </p>
           <p>
-            I believe the same obsessive attention to detail that makes a circuit board sing is what gets you
-            through mile 18 of a marathon — or through a purple belt's guard. The common thread is systems thinking
-            under pressure, and that's the thing I love most.
+            My background spans Amazon Alexa Automotive, conversational AI customer support, HPE Aruba enterprise networking,
+            Cisco product strategy, and Ericsson RF systems. I've worked across voice interfaces, connected vehicles,
+            cloud-connected devices, embedded platforms, telemetry, enterprise infrastructure, and 0→1 product launches.
           </p>
           <p>
-            Currently at{" "}
-            <span className="text-violet-400 font-medium">Your Company</span>, building
-            hardware that works in the field, not just on a bench.
+            I'm currently building{" "}
+            <span className="text-violet-400 font-medium">Copa Labs</span>, a smart portable sanitation system combining
+            sensors, telemetry, access control, remote monitoring, and a path toward autonomous cleaning workflows.
           </p>
-
-          <div className="pt-2">
-            <p className="text-white/40 text-xs font-mono mb-3 tracking-wider uppercase">Things I'm into</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-              {INTERESTS.map((item) => (
-                <div key={item}
-                  className="font-inter text-xs text-white/50 bg-white/3 border border-white/8 rounded-lg px-3 py-2 hover:border-violet-400/30 hover:text-white/70 transition-all">
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
+          <p>
+            Outside work, endurance sports and mountains are a major part of how I think about discipline, systems, and execution.
+          </p>
         </div>
 
         {/* Photo card */}
