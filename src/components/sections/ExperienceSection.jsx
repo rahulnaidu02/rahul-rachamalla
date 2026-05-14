@@ -39,36 +39,44 @@ export default function ExperienceSection() {
       viewport={{ once: true }} transition={{ duration: 0.6 }}>
       <SectionHeading num="02" title="Experience" />
 
-      <div className="space-y-2 mb-10">
+      <div className="space-y-3 mb-14">
         {JOBS.map((job, i) => (
-          <div key={i} className="group relative rounded-xl border border-transparent hover:border-violet-400/20 hover:bg-violet-400/4 p-6 transition-all duration-300">
-            <div className="absolute left-0 top-6 bottom-6 w-px bg-gradient-to-b from-violet-400/60 to-cyan-400/30 opacity-0 group-hover:opacity-100 transition-opacity rounded-full" />
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: i * 0.07 }}
+            className="group relative rounded-2xl border border-white/8 bg-white/2 hover:border-violet-400/25 hover:bg-violet-400/4 p-8 transition-all duration-300"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-4">
               <div>
-                <span className="font-syne font-bold text-white text-base">{job.role}</span>
-                <span className="text-violet-400 font-medium"> @ {job.company}</span>
+                <span className="font-syne font-bold text-white" style={{ fontSize: "1.2rem" }}>{job.role}</span>
+                <span className="text-violet-400 font-semibold" style={{ fontSize: "1.1rem" }}> @ {job.company}</span>
               </div>
             </div>
-            <p className="font-inter text-sm text-white/50 leading-relaxed mb-4">{job.description}</p>
+            <p className="font-inter text-white/55 leading-[1.8] mb-5" style={{ fontSize: "1rem" }}>
+              {job.description}
+            </p>
             <div className="flex flex-wrap gap-2">
               {job.tags.map((tag) => (
-                <span key={tag} className="font-mono text-[10px] tracking-wide px-2 py-0.5 rounded bg-violet-400/8 border border-violet-400/15 text-violet-300/70">
+                <span key={tag} className="font-mono tracking-wide px-3 py-1 rounded-full bg-violet-400/8 border border-violet-400/15 text-violet-300/70" style={{ fontSize: "0.8rem" }}>
                   {tag}
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
       <div>
-        <p className="font-mono text-xs text-white/30 tracking-widest uppercase mb-4">Education</p>
-        <div className="space-y-3">
+        <p className="font-mono text-white/35 tracking-widest uppercase mb-6" style={{ fontSize: "0.8rem" }}>Education</p>
+        <div className="space-y-4">
           {EDUCATION.map((edu, i) => (
             <div key={i} className="flex flex-col sm:flex-row sm:items-center gap-1">
-              <span className="font-syne font-semibold text-white/80 text-sm">{edu.school}</span>
-              <span className="hidden sm:block text-white/20 mx-2">—</span>
-              <span className="font-inter text-sm text-white/45">{edu.degree}</span>
+              <span className="font-syne font-bold text-white/85" style={{ fontSize: "1.05rem" }}>{edu.school}</span>
+              <span className="hidden sm:block text-white/25 mx-3">—</span>
+              <span className="font-inter text-white/55" style={{ fontSize: "1rem" }}>{edu.degree}</span>
             </div>
           ))}
         </div>

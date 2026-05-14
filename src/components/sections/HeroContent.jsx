@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Instagram, Mail } from "lucide-react";
 
@@ -21,7 +21,7 @@ const PILLS = [
   "Edge Intelligence", "Embedded Systems", "Fleet Operations", "Voice AI", "Product Strategy",
 ];
 
-function useTypewriter(text, startDelay = 400, speed = 60) {
+function useTypewriter(text, startDelay = 400, speed = 38) {
   const [displayed, setDisplayed] = useState("");
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const DEFAULT_PROFILE_IMAGE = "https://media.base44.com/images/public/6a06176023
 
 export default function HeroContent() {
   const typedHeadline = useTypewriter(
-    "I build connected hardware-software systems for the physical world.",
+    "I build and ship products across AI, connected hardware, and real-world operations.",
     900,
     38
   );
@@ -77,23 +77,23 @@ export default function HeroContent() {
     >
       {/* Left: text content */}
       <div className="flex-1 flex flex-col justify-center">
-        <motion.p variants={item} className="font-mono text-violet-400 text-sm mb-4 tracking-widest">
+        <motion.p variants={item} className="font-mono text-violet-400 text-base mb-5 tracking-widest">
           Hi, my name is
         </motion.p>
 
         <motion.h1
           variants={item}
           className="font-syne font-bold text-white leading-[1.05] mb-6"
-          style={{ fontSize: "clamp(3rem, 6vw, 5.5rem)", letterSpacing: "-0.02em" }}
+          style={{ fontSize: "clamp(3.2rem, 6.5vw, 6rem)", letterSpacing: "-0.02em" }}
         >
           Rahul Rachamalla.
         </motion.h1>
 
         <motion.h2
           variants={item}
-          className="font-syne font-semibold leading-tight mb-6"
+          className="font-syne font-semibold leading-tight mb-8"
           style={{
-            fontSize: "clamp(1.5rem, 3vw, 2.6rem)",
+            fontSize: "clamp(1.6rem, 3.2vw, 2.8rem)",
             background: "linear-gradient(135deg, #a78bfa 0%, #818cf8 50%, #38bdf8 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -109,7 +109,8 @@ export default function HeroContent() {
 
         <motion.p
           variants={item}
-          className="font-inter text-white/55 text-lg leading-relaxed mb-5"
+          className="font-inter text-white/60 leading-relaxed mb-6"
+          style={{ fontSize: "clamp(1rem, 1.5vw, 1.125rem)" }}
         >
           I'm Rahul Rachamalla, an engineer by training and product builder by profession. I've spent the last decade
           building conversational AI, connected vehicle experiences, edge infrastructure, enterprise networking,
@@ -122,31 +123,14 @@ export default function HeroContent() {
 
         <motion.p
           variants={item}
-          className="font-inter text-white/40 text-base leading-relaxed mb-5"
+          className="font-inter text-white/40 leading-relaxed mb-8"
+          style={{ fontSize: "clamp(0.9rem, 1.3vw, 1rem)" }}
         >
           Today, I'm focused on physical AI, autonomous systems, telemetry, and field operations automation
           through <span className="text-violet-400 font-medium">Copa Labs</span> and other experimental hardware/software projects.
         </motion.p>
 
-        <motion.p
-          variants={item}
-          className="font-mono text-xs text-white/30 mb-6 tracking-wide"
-        >
-          Full Ironman finisher · Multiple half Ironman finisher · Amateur mountaineer · Former MMA practitioner
-        </motion.p>
-
-        <motion.div variants={item} className="flex flex-wrap gap-2 mb-8">
-          {PILLS.map((pill) => (
-            <span
-              key={pill}
-              className="font-mono text-[11px] tracking-wide px-3 py-1 rounded-full bg-violet-400/8 border border-violet-400/20 text-violet-300/70"
-            >
-              {pill}
-            </span>
-          ))}
-        </motion.div>
-
-        <motion.div variants={item} className="flex items-center gap-5 mb-8">
+        <motion.div variants={item} className="flex items-center gap-5 mb-10">
           {SOCIALS.map(({ Icon, href, label }) => (
             <motion.a
               key={label}
@@ -162,10 +146,10 @@ export default function HeroContent() {
           ))}
         </motion.div>
 
-        <motion.div variants={item} className="flex items-center gap-6 flex-wrap">
+        <motion.div variants={item} className="flex items-center gap-6 flex-wrap mb-10">
           <a
             href="#contact"
-            className="font-mono text-sm px-6 py-3 rounded border border-violet-400 text-violet-400 hover:bg-violet-400/10 transition-all duration-200 tracking-wide"
+            className="font-mono text-sm px-7 py-3.5 rounded border border-violet-400 text-violet-400 hover:bg-violet-400/10 transition-all duration-200 tracking-wide"
           >
             Get In Touch
           </a>
@@ -177,9 +161,42 @@ export default function HeroContent() {
           </a>
         </motion.div>
 
-        <motion.div variants={item} className="mt-14 flex items-center gap-3">
+        {/* Endurance line — prominent */}
+        <motion.div
+          variants={item}
+          className="mb-10 px-5 py-4 rounded-xl border border-white/10 bg-white/3 inline-flex flex-wrap gap-x-3 gap-y-1 items-center"
+          style={{ maxWidth: "fit-content" }}
+        >
+          {[
+            "Full Ironman Finisher",
+            "Multiple Half Ironman Finisher",
+            "Swam Alcatraz to San Francisco",
+            "Amateur Mountain Climber",
+            "Former MMA Practitioner",
+          ].map((item, i, arr) => (
+            <span key={i} className="font-mono text-white/60 tracking-wide" style={{ fontSize: "0.8rem" }}>
+              {item}
+              {i < arr.length - 1 && <span className="ml-3 text-violet-400/50">•</span>}
+            </span>
+          ))}
+        </motion.div>
+
+        {/* Pills — secondary */}
+        <motion.div variants={item} className="flex flex-wrap gap-2">
+          {PILLS.map((pill) => (
+            <span
+              key={pill}
+              className="font-mono tracking-wide px-3 py-1.5 rounded-full bg-violet-400/8 border border-violet-400/20 text-violet-300/60"
+              style={{ fontSize: "0.75rem" }}
+            >
+              {pill}
+            </span>
+          ))}
+        </motion.div>
+
+        <motion.div variants={item} className="mt-12 flex items-center gap-3">
           <div className="h-px w-12 bg-gradient-to-r from-transparent to-white/15" />
-          <span className="font-mono text-[10px] text-white/20 tracking-widest uppercase">scroll to explore</span>
+          <span className="font-mono text-xs text-white/20 tracking-widest uppercase">scroll to explore</span>
         </motion.div>
       </div>
 
