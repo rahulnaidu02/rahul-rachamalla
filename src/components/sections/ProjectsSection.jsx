@@ -19,8 +19,7 @@ const PROJECTS = [
   {
     type: "copa-fleet-group",
     images: [
-      "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/a19fab8b5_Screenshot2026-05-13062833.png",
-      "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/38928a944_Screenshot2026-05-13063023.png",
+      "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/89d9de61c_Screenshot2026-05-13062833.png",
     ],
     title: "COPA Fleet Command Center",
     subtitle: "Fleet Operations Dashboard",
@@ -172,8 +171,8 @@ function CopaFleetGroup({ project, index, cardNumber }) {
       style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.10), 0 4px 24px rgba(139,92,246,0.08)" }}
     >
       {/* Card number */}
-      <div className="absolute top-4 right-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-violet-400/20 border border-violet-400/40">
-        <span className="font-syne font-bold text-violet-300" style={{ fontSize: "1.1rem" }}>{cardNumber}</span>
+      <div className="absolute top-6 left-6 z-10 flex items-center justify-center">
+        <span className="font-syne font-bold text-violet-300" style={{ fontSize: "2.5rem" }}>{cardNumber}</span>
       </div>
       {/* Header */}
       <div className="flex items-center justify-between px-8 py-5 border-b border-violet-400/15 bg-violet-400/4 flex-wrap gap-3">
@@ -191,13 +190,9 @@ function CopaFleetGroup({ project, index, cardNumber }) {
           Check out more on this website <ExternalLink className="w-3.5 h-3.5 opacity-60" />
         </a>
       </div>
-      {/* Two screenshots — same height, side by side */}
-      <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/8">
-        {project.images.map((src, i) => (
-          <div key={i} className="overflow-hidden" style={{ height: "280px" }}>
-            <img src={src} alt={`${project.title} screenshot ${i + 1}`} className="w-full h-full object-cover object-top" />
-          </div>
-        ))}
+      {/* Image display */}
+      <div className="overflow-hidden" style={{ height: "360px" }}>
+        <img src={project.images[0]} alt={project.title} className="w-full h-full object-cover object-top" />
       </div>
       {/* Shared description below */}
       <div className="p-8 flex flex-col gap-4 border-t border-white/6">
@@ -226,8 +221,8 @@ function SO101Card({ project, index, cardNumber }) {
       style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.10), 0 4px 24px rgba(139,92,246,0.08)" }}
     >
       {/* Card number */}
-      <div className="absolute top-4 right-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-violet-400/20 border border-violet-400/40">
-        <span className="font-syne font-bold text-violet-300" style={{ fontSize: "1.1rem" }}>{cardNumber}</span>
+      <div className="absolute top-6 left-6 z-10 flex items-center justify-center">
+        <span className="font-syne font-bold text-violet-300" style={{ fontSize: "2.5rem" }}>{cardNumber}</span>
       </div>
       {/* Header */}
       <div className="flex items-center justify-between px-8 py-5 border-b border-violet-400/15 bg-violet-400/4 flex-wrap gap-3">
@@ -298,8 +293,8 @@ function ProjectCard({ project, index, cardNumber }) {
       }
     >
       {/* Card number */}
-      <div className="absolute top-4 right-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-violet-400/20 border border-violet-400/40">
-        <span className="font-syne font-bold text-violet-300" style={{ fontSize: "1.1rem" }}>{cardNumber}</span>
+      <div className="absolute top-6 left-6 z-10 flex items-center justify-center">
+        <span className="font-syne font-bold text-violet-300" style={{ fontSize: "2.5rem" }}>{cardNumber}</span>
       </div>
 
 
@@ -373,9 +368,6 @@ export default function ProjectsSection() {
       transition={{ duration: 0.6 }}
     >
       <SectionHeading num="04" title="AI Projects" />
-      <p className="font-inter text-white/45 mb-10 leading-[1.8]" style={{ fontSize: "1.0625rem" }}>
-        Experimental systems across AI, robotics, telemetry, automation, and connected infrastructure.
-      </p>
 
       <div className="flex flex-col gap-6">
         {PROJECTS.map((p, i) => {
