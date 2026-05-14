@@ -15,7 +15,6 @@ const NAV_ITEMS = [
   { id: "projects", label: "AI Projects" },
   { id: "ironman", label: "Ironman" },
   { id: "mountains", label: "Mountains" },
-  { id: "hardware", label: "Hardware" },
   { id: "github", label: "GitHub" },
   { id: "mma", label: "MMA" },
   { id: "substack", label: "Substack" },
@@ -23,11 +22,11 @@ const NAV_ITEMS = [
 ];
 
 const SOCIALS = [
-  { Icon: Github, href: "https://github.com/rahulrachamalla", label: "GitHub" },
-  { Icon: Linkedin, href: "https://linkedin.com/in/rahulrachamalla", label: "LinkedIn" },
+  { Icon: Github, href: "https://github.com/rahulnaidu02", label: "GitHub" },
+  { Icon: Linkedin, href: "https://www.linkedin.com/in/rahulrachamalla/", label: "LinkedIn" },
   { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
   { Icon: SubstackIcon, href: "https://substack.com", label: "Substack" },
-  { Icon: Mail, href: "mailto:rahul@example.com", label: "Email" },
+  { Icon: Mail, href: "mailto:rahulnaidu.rac@gmail.com", label: "Email" },
 ];
 
 export default function SideNav({ activeSection, onNavClick, profileImage, onImageChange }) {
