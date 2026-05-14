@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 import SectionHeading from "./SectionHeading";
 
 const CAROUSEL_IMAGES = [
-  "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/71b7dfea5_COPAGarage.png",
-  "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/09e537e5c_CutawayFrontLowAngle-TransparentBG.png",
-  "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/24b878a10_DSCF8549.jpg",
+  "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/6639f74de_COPAGarage.png",
+  "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/10ee96039_CutawayFrontLowAngle-TransparentBG.png",
+  "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/4d9cbd77d_DSCF8549.jpg",
+  "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/9935f76bd_PCB.png",
 ];
 
 const FEATURE_CARDS = [
@@ -53,7 +54,7 @@ function Carousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % CAROUSEL_IMAGES.length);
-    }, 900);
+    }, 1400);
     return () => clearInterval(interval);
   }, []);
 
@@ -74,6 +75,21 @@ function Carousel() {
   );
 }
 
+function MediaPlaceholder() {
+  return (
+    <div className="w-full rounded-2xl overflow-hidden border border-white/8">
+      <video
+        src="https://media.base44.com/videos/public/6a061760231cbb0e0f2caa6b/7b6e29037_CopaGIFSelfCleaningPrototypeearlystage.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="w-full h-full object-cover"
+      />
+    </div>
+  );
+}
+
 export default function FounderSection() {
   return (
     <motion.div
@@ -82,17 +98,19 @@ export default function FounderSection() {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <SectionHeading num="03" title="Founder & Builder" />
+      <SectionHeading num="03" title="AI Founder & Builder" />
 
-      {/* Top carousel */}
-      <div className="mb-14">
-        <Carousel />
-      </div>
-
-      {/* Split layout */}
+      {/* Split layout with robotic arm and narrative */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 mb-14">
-        {/* Left: empty */}
-        <div />
+        {/* Left: media */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55, delay: 0.1 }}
+        >
+          <MediaPlaceholder />
+        </motion.div>
 
         {/* Right: narrative */}
         <motion.div
@@ -132,11 +150,6 @@ export default function FounderSection() {
               ))}
             </div>
           </div>
-
-          <p className="font-inter text-white/40 leading-[1.8] mt-8 italic" style={{ fontSize: "1rem" }}>
-            The long-term vision is building intelligent physical systems that combine AI, sensors,
-            robotics, and operational infrastructure into scalable real-world products.
-          </p>
         </motion.div>
       </div>
 
@@ -166,8 +179,8 @@ export default function FounderSection() {
         ))}
       </div>
 
-      {/* Bottom carousel — full width */}
-      <div className="mb-8">
+      {/* Carousel */}
+      <div>
         <Carousel />
       </div>
     </motion.div>
