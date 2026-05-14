@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Play, Cpu, Radio, Layers, Zap } from "lucide-react";
+import { Cpu, Radio, Layers, Zap } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 const FEATURE_CARDS = [
@@ -42,14 +42,15 @@ const CURRENT_WORK = [
 
 function MediaPlaceholder() {
   return (
-    <div className="w-full h-full min-h-[420px] flex flex-col items-center justify-center rounded-2xl border border-white/8 bg-gradient-to-br from-violet-950/30 via-white/2 to-fuchsia-950/20">
-      <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center mb-4 bg-white/4">
-        <Play className="w-6 h-6 text-white/20" />
-      </div>
-      <p className="font-inter text-white/30 text-base mb-1">Founder media coming soon</p>
-      <p className="font-mono text-white/15 tracking-wide mt-1" style={{ fontSize: "0.75rem" }}>
-        Photo · GIF · Video · Architecture diagram
-      </p>
+    <div className="w-full rounded-2xl overflow-hidden border border-white/8">
+      <video
+        src="https://media.base44.com/videos/public/6a061760231cbb0e0f2caa6b/7b6e29037_CopaGIFSelfCleaningPrototypeearlystage.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="w-full h-full object-cover"
+      />
     </div>
   );
 }
