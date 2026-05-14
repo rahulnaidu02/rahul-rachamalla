@@ -3,6 +3,12 @@ import { Cpu, Radio, Layers, Zap } from "lucide-react";
 import { useState, useEffect } from "react";
 import SectionHeading from "./SectionHeading";
 
+const CAROUSEL_IMAGES = [
+  "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/71b7dfea5_COPAGarage.png",
+  "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/09e537e5c_CutawayFrontLowAngle-TransparentBG.png",
+  "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/24b878a10_DSCF8549.jpg",
+];
+
 const FEATURE_CARDS = [
   {
     icon: Cpu,
@@ -41,13 +47,7 @@ const CURRENT_WORK = [
   "Physical infrastructure monitoring",
 ];
 
-const CAROUSEL_IMAGES = [
-  "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/71b7dfea5_COPAGarage.png",
-  "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/09e537e5c_CutawayFrontLowAngle-TransparentBG.png",
-  "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/24b878a10_DSCF8549.jpg",
-];
-
-function MediaPlaceholder() {
+function Carousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -84,17 +84,15 @@ export default function FounderSection() {
     >
       <SectionHeading num="03" title="Founder & Builder" />
 
+      {/* Top carousel */}
+      <div className="mb-14">
+        <Carousel />
+      </div>
+
       {/* Split layout */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 mb-14">
-        {/* Left: media */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55, delay: 0.1 }}
-        >
-          <MediaPlaceholder />
-        </motion.div>
+        {/* Left: empty */}
+        <div />
 
         {/* Right: narrative */}
         <motion.div
@@ -143,7 +141,7 @@ export default function FounderSection() {
       </div>
 
       {/* Feature cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
         {FEATURE_CARDS.map(({ icon: Icon, title, description }, i) => (
           <motion.div
             key={title}
@@ -166,6 +164,11 @@ export default function FounderSection() {
             </div>
           </motion.div>
         ))}
+      </div>
+
+      {/* Bottom carousel — full width */}
+      <div className="mb-8">
+        <Carousel />
       </div>
     </motion.div>
   );
