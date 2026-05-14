@@ -1,49 +1,49 @@
-import NavBar from "../components/dossier/NavBar";
-import AltitudeLine from "../components/dossier/AltitudeLine";
-import HeroSection from "../components/sections/HeroSection";
-import ExperienceSection from "../components/sections/ExperienceSection";
-import ProjectsSection from "../components/sections/ProjectsSection";
-import EnduranceSection from "../components/sections/EnduranceSection";
-import ContactSection from "../components/sections/ContactSection";
+import { useState } from "react";
+import ProfileHeader from "../components/profile/ProfileHeader";
+import TabNav from "../components/profile/TabNav";
+import AboutTab from "../components/tabs/AboutTab";
+import ExperienceTab from "../components/tabs/ExperienceTab";
+import ProjectsTab from "../components/tabs/ProjectsTab";
+import IronmanTab from "../components/tabs/IronmanTab";
+import MountainsTab from "../components/tabs/MountainsTab";
+import HardwareTab from "../components/tabs/HardwareTab";
+import GitHubTab from "../components/tabs/GitHubTab";
+import ContactTab from "../components/tabs/ContactTab";
 
-// Image imports
-const IMAGES = {
-  heroClimbing: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/1a0cdaf7d_generated_e6be3dfa.png",
-  hardwareHero: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/c4efa968a_generated_78eb8c30.png",
-  ironmanDetail: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/a3e0fb2de_generated_a89d371c.png",
-  mountainLandscape: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/9b838dae9_generated_29e50a8a.png",
-  climbingGrip: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/1f79e2013_generated_6391aa44.png",
-  hardwareWorkspace: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/034300e81_generated_d1ea916b.png",
-  swimAction: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/47f3a945f_generated_be378480.png",
-  codeScreen: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/2c1d18e6d_generated_155fef02.png",
+const PROFILE_IMAGE = "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/f2a0b5939_generated_image.png";
+
+const TAB_COMPONENTS = {
+  about: <AboutTab />,
+  experience: <ExperienceTab />,
+  projects: <ProjectsTab />,
+  ironman: <IronmanTab />,
+  mountains: <MountainsTab />,
+  hardware: <HardwareTab />,
+  github: <GitHubTab />,
+  contact: <ContactTab />,
 };
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState("about");
+
   return (
-    <div className="relative min-h-screen bg-background text-foreground font-inter">
-      <AltitudeLine />
-      <NavBar />
+    <div className="min-h-screen bg-[#0A0B0D] text-foreground font-inter">
+      {/* Centered content column — Deedy-style */}
+      <div className="max-w-2xl mx-auto px-5 py-12 sm:py-16">
+        <ProfileHeader profileImage={PROFILE_IMAGE} />
+        <TabNav activeTab={activeTab} onTabChange={setActiveTab} />
+        <div key={activeTab}>
+          {TAB_COMPONENTS[activeTab]}
+        </div>
 
-      <HeroSection
-        heroImage={IMAGES.heroClimbing}
-        hardwareImage={IMAGES.hardwareHero}
-      />
-
-      <ExperienceSection />
-
-      <ProjectsSection
-        hardwareImage={IMAGES.hardwareWorkspace}
-        codeImage={IMAGES.codeScreen}
-      />
-
-      <EnduranceSection
-        ironmanImage={IMAGES.ironmanDetail}
-        climbImage={IMAGES.climbingGrip}
-        swimImage={IMAGES.swimAction}
-        mountainImage={IMAGES.mountainLandscape}
-      />
-
-      <ContactSection />
+        {/* Footer */}
+        <div className="mt-20 pt-8 border-t border-border">
+          <p className="font-inter text-xs text-[#A0A0A0] text-center">
+            Built with ☕ and way too much solder —{" "}
+            <span className="text-primary">Your Name</span> © {new Date().getFullYear()}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
