@@ -23,8 +23,7 @@ export default function ContactSection() {
 
       <div className="max-w-lg mb-10">
         <p className="font-inter text-sm text-white/50 leading-relaxed">
-          Currently open to interesting conversations — whether that's hardware collaboration,
-          training talk, or just a good coffee recommendation. My inbox is always open.
+          Currently open to interesting conversations: hardware collaboration, training talk, or just a good coffee recommendation. My inbox is always open.
         </p>
       </div>
 

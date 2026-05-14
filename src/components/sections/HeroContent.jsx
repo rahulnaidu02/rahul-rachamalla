@@ -154,7 +154,7 @@ export default function HeroContent() {
 
         {/* Body paragraphs — consistent typography */}
         <motion.p variants={item} className="text-white/60 mb-5" style={BODY_STYLE}>
-          I'm Rahul Rachamalla, an engineer by training and product builder by profession. I've spent the last decade
+          I am Rahul Rachamalla, an engineer by training and product builder by profession. I have spent the last decade
           building conversational AI, connected vehicle experiences, edge infrastructure, enterprise networking,
           IoT systems, and cloud-device platforms at{" "}
           <span className="text-violet-400 font-medium">Amazon</span>,{" "}

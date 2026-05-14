@@ -9,7 +9,7 @@ const RACES = [
     swim: "1:08",
     bike: "5:47",
     run: "4:12",
-    notes: "First full Ironman. The last 10k of the marathon was the hardest thing I've ever done. I cried at the finish line.",
+    notes: "First full Ironman. The last 10k of the marathon was the hardest thing I have ever done. I cried at the finish line.",
     image: "https://images.unsplash.com/photo-1530549387789-4c1017266635?w=800&auto=format&fit=crop",
   },
   {
@@ -19,7 +19,7 @@ const RACES = [
     swim: "0:34",
     bike: "2:51",
     run: "2:08",
-    notes: "Half distance used as a training race. Cold Baltic sea made the swim brutal. Negative split on the run — proudest achievement.",
+    notes: "Half distance used as a training race. Cold Baltic sea made the swim brutal. Negative split on the run. Proudest achievement.",
     image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop",
   },
 ];

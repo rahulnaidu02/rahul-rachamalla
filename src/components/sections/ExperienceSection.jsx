@@ -75,7 +75,7 @@ export default function ExperienceSection() {
           {EDUCATION.map((edu, i) => (
             <div key={i} className="flex flex-col sm:flex-row sm:items-center gap-1">
               <span className="font-syne font-bold text-white/85" style={{ fontSize: "1.05rem" }}>{edu.school}</span>
-              <span className="hidden sm:block text-white/25 mx-3">—</span>
+              <span className="hidden sm:block text-white/25 mx-3">|</span>
               <span className="font-inter text-white/55" style={{ fontSize: "1rem" }}>{edu.degree}</span>
             </div>
           ))}

@@ -5,7 +5,7 @@ import SectionHeading from "./SectionHeading";
 const PROJECTS = [
   {
     title: "Patent Pending Autonomous Maintenance System",
-    subtitle: "Predictive Maintenance • User Access Control • Autonomous Servicing",
+    subtitle: "Predictive Maintenance, User Access Control, Autonomous Servicing",
     description:
       "Patent-pending sanitation infrastructure system combining predictive maintenance, telemetry, user access control, and autonomous servicing workflows for real-world field deployments.",
     tags: ["Patent Pending", "Predictive Maintenance", "Access Control", "Telemetry", "Autonomous Servicing"],
