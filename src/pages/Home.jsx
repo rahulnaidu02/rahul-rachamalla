@@ -36,32 +36,47 @@ export default function Home() {
 
   const sectionRefs = useRef({});
   const observerRef = useRef(null);
+  const intersectingRef = useRef(new Set());
 
-  // IntersectionObserver — mirrors Brittany Chiang's approach:
-  // whichever section covers the most of the viewport wins.
   useEffect(() => {
     const ids = NAV_ITEMS.map((n) => n.id);
 
+    const pickActive = () => {
+      // Among all currently intersecting sections, pick the one whose top
+      // edge is closest to (but still above) the middle of the viewport.
+      const viewportMid = window.innerHeight * 0.4;
+      let best = null;
+      let bestDist = Infinity;
+
+      intersectingRef.current.forEach((id) => {
+        const el = sectionRefs.current[id];
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        // Distance from top of section to our reference line
+        const dist = Math.abs(rect.top - viewportMid);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = id;
+        }
+      });
+
+      if (best) setActiveSection(best);
+    };
+
     observerRef.current = new IntersectionObserver(
       (entries) => {
-        // Find the entry with the largest intersection ratio that is currently intersecting
-        let best = null;
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (!best || entry.intersectionRatio > best.intersectionRatio) {
-              best = entry;
-            }
+            intersectingRef.current.add(entry.target.id);
+          } else {
+            intersectingRef.current.delete(entry.target.id);
           }
         });
-        if (best) {
-          setActiveSection(best.target.id);
-        }
+        pickActive();
       },
       {
-        // Trigger when at least 20% of a section is visible
-        threshold: [0.1, 0.2, 0.3, 0.5],
-        // Shrink the root margin so sections near the center of the screen win
-        rootMargin: "-10% 0px -55% 0px",
+        threshold: [0, 0.1, 0.2, 0.3],
+        rootMargin: "0px 0px -30% 0px",
       }
     );
 
