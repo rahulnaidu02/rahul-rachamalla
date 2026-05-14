@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Cpu, Radio, Layers, Zap } from "lucide-react";
+import { useState, useEffect } from "react";
 import SectionHeading from "./SectionHeading";
 
 const FEATURE_CARDS = [
@@ -40,18 +41,36 @@ const CURRENT_WORK = [
   "Physical infrastructure monitoring",
 ];
 
+const CAROUSEL_IMAGES = [
+  "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/71b7dfea5_COPAGarage.png",
+  "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/09e537e5c_CutawayFrontLowAngle-TransparentBG.png",
+  "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/24b878a10_DSCF8549.jpg",
+];
+
 function MediaPlaceholder() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % CAROUSEL_IMAGES.length);
+    }, 900);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="w-full rounded-2xl overflow-hidden border border-white/8">
-      <video
-        src="https://media.base44.com/videos/public/6a061760231cbb0e0f2caa6b/7b6e29037_CopaGIFSelfCleaningPrototypeearlystage.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="w-full h-full object-cover"
+    <motion.div
+      className="w-full rounded-2xl overflow-hidden border border-white/8 flex items-center justify-center bg-white/2"
+      style={{ aspectRatio: "4/3" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+    >
+      <img
+        src={CAROUSEL_IMAGES[currentIndex]}
+        alt={`COPA Prototype ${currentIndex + 1}`}
+        className="w-full h-full object-contain"
       />
-    </div>
+    </motion.div>
   );
 }
 
