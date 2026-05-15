@@ -20,8 +20,8 @@ export default function IronmanSection() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}
-          className="rounded-2xl overflow-hidden border border-white/8 bg-white/2">
-          <img src={HERO_IMAGE} alt="Ironman" className="w-full h-auto object-contain" />
+          className="rounded-2xl overflow-hidden border border-white/8 bg-white/2 flex items-center justify-center">
+          <img src={HERO_IMAGE} alt="Ironman" className="w-full h-full object-cover object-center" />
         </motion.div>
 
         <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.15 }}
