@@ -30,6 +30,10 @@ export const NAV_ITEMS = [
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("about");
+  
+  useEffect(() => {
+    document.title = "Rahul Rachamalla";
+  }, []);
   const [profileImage, setProfileImage] = useState(DEFAULT_PROFILE_IMAGE);
 
   const sectionRefs = useRef({});
