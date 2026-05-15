@@ -174,7 +174,7 @@ function CopaFleetGroup({ project, index, cardNumber }) {
     <motion.div
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, amount: 0 }}
       transition={{ duration: 0.5, delay: index * 0.06, ease: "easeOut" }}
       className="rounded-2xl border border-violet-400/20 bg-white/2 overflow-hidden relative"
       style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.10), 0 4px 24px rgba(139,92,246,0.08)" }}
@@ -220,7 +220,7 @@ function SO101Card({ project, index, cardNumber }) {
     <motion.div
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, amount: 0 }}
       transition={{ duration: 0.5, delay: index * 0.06, ease: "easeOut" }}
       className="rounded-2xl border border-violet-400/20 bg-white/2 overflow-hidden relative"
       style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.10), 0 4px 24px rgba(139,92,246,0.08)" }}
@@ -276,7 +276,7 @@ function ProjectCard({ project, index, cardNumber }) {
     <motion.div
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, amount: 0 }}
       transition={{ duration: 0.5, delay: index * 0.06, ease: "easeOut" }}
       whileHover={flagship ? {} : { y: -2 }}
       className={`group relative rounded-2xl overflow-hidden flex flex-col transition-all duration-300 ${

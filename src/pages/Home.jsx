@@ -158,7 +158,7 @@ export default function Home() {
 
           {/* AI Projects */}
           <section ref={(el) => (sectionRefs.current["projects"] = el)} id="projects">
-            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.65, ease: "easeOut" }}>
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0 }} transition={{ duration: 0.65, ease: "easeOut" }}>
               <ProjectsSection />
             </motion.div>
           </section>
