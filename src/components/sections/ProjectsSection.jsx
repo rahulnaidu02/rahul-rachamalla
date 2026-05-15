@@ -374,8 +374,8 @@ export default function ProjectsSection() {
           const cardNumber = i + 1;
           return (
             <div key={i} className="relative">
-              {/* Card number outside frame */}
-              <div className="absolute -left-16 top-0 flex items-center justify-center w-12 h-12">
+              {/* Card number outside frame - hidden on mobile */}
+              <div className="absolute -left-16 top-0 hidden lg:flex items-center justify-center w-12 h-12">
                 <span className="font-syne font-bold text-violet-300" style={{ fontSize: "2.8rem" }}>{cardNumber}</span>
               </div>
               {p.type === "copa-fleet-group" ? (

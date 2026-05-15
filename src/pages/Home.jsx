@@ -102,7 +102,7 @@ export default function Home() {
       />
 
       {/* Scrollable right content */}
-      <main className="flex-1 lg:ml-80 xl:ml-96 2xl:ml-96">
+      <main className="flex-1 lg:ml-80 xl:ml-96 2xl:ml-96 overflow-x-hidden">
         {/* GitHub badge — top right */}
         <a
           href="https://github.com/rahulnaidu02"
