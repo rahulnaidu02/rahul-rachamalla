@@ -63,7 +63,7 @@ export default function SideNav({ activeSection, onNavClick, profileImage, onIma
 
           {/* Tagline */}
           <p className="font-mono text-base text-violet-400 mb-10 tracking-wide">
-            Product Builder · Physical AI · Ironman
+            Product Builder · Conversational AI · Physical AI · Ironman
           </p>
 
           {/* Nav — Brittany style: line grows on active */}
