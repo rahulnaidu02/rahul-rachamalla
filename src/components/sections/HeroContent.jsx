@@ -152,10 +152,24 @@ export default function HeroContent() {
           </span>
         </motion.h2>
 
+        {/* Profile photo — above body text */}
+        <motion.div variants={item} className="flex justify-center mb-10">
+          <div
+            className="relative w-72 sm:w-96 md:w-[28rem] rounded-2xl overflow-hidden"
+            style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.15), 0 24px 48px rgba(0,0,0,0.5)" }}
+          >
+            <img
+              src={DEFAULT_PROFILE_IMAGE}
+              alt="Rahul Rachamalla"
+              className="w-full h-auto"
+            />
+          </div>
+        </motion.div>
+
         {/* Body paragraphs — consistent typography */}
         <motion.p variants={item} className="text-white/60 mb-5" style={BODY_STYLE}>
           I'm a <span className="text-violet-400 font-medium">product builder</span> focused on{" "}
-          <span className="text-violet-400 font-medium">computational AI</span> and{" "}
+          <span className="text-violet-400 font-medium">conversational AI</span> and{" "}
           <span className="text-violet-400 font-medium">physical AI</span>. I've spent the last decade building AI systems,
           connected infrastructure, IoT platforms, and edge intelligence at{" "}
           <span className="text-violet-400 font-medium">Amazon</span>,{" "}
@@ -169,20 +183,6 @@ export default function HeroContent() {
           <span className="text-violet-400 font-medium">Copa Labs</span>. Beyond work, I'm an{" "}
           <span className="text-violet-400 font-medium">Ironman finisher</span> and endurance athlete committed to pushing physical limits.
         </motion.p>
-
-        {/* Profile photo — inline, above CTAs */}
-        <motion.div variants={item} className="flex justify-center mb-10">
-          <div
-            className="relative w-64 sm:w-80 rounded-2xl overflow-hidden"
-            style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.15), 0 24px 48px rgba(0,0,0,0.5)" }}
-          >
-            <img
-              src={DEFAULT_PROFILE_IMAGE}
-              alt="Rahul Rachamalla"
-              className="w-full h-auto"
-            />
-          </div>
-        </motion.div>
 
         {/* Social + CTAs */}
         <motion.div variants={item} className="flex items-center gap-5 mb-8">
