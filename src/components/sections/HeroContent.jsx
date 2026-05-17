@@ -273,19 +273,18 @@ export default function HeroContent() {
       {/* Right: profile photo */}
       <motion.div
         variants={item}
-        className="hidden lg:flex flex-shrink-0 ml-16 items-start justify-center"
+        className="hidden lg:flex flex-shrink-0 ml-16 items-center justify-center"
       >
         <div
-          className="relative w-80 h-96 xl:w-[26rem] xl:h-[30rem] rounded-2xl overflow-hidden"
+          className="relative w-80 xl:w-[26rem] rounded-2xl overflow-hidden"
           style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.15), 0 32px 64px rgba(0,0,0,0.5)" }}
         >
           <div className="absolute -inset-4 rounded-3xl bg-violet-500/10 blur-2xl -z-10" />
           <img
             src={DEFAULT_PROFILE_IMAGE}
             alt="Rahul Rachamalla"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-auto object-contain"
           />
-          <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#0a0e1a] to-transparent" />
         </div>
       </motion.div>
     </motion.div>
