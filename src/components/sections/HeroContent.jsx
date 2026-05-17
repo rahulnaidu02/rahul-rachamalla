@@ -118,19 +118,10 @@ export default function HeroContent() {
       variants={container}
       initial="hidden"
       animate="show"
-      className="min-h-[90vh] flex flex-col lg:flex-row items-center py-16 lg:py-0"
+      className="min-h-[90vh] flex flex-col py-16"
     >
-      {/* Mobile: profile photo at top */}
-      <motion.div variants={item} className="lg:hidden flex justify-center mb-10">
-        <div className="relative w-48 h-56 rounded-2xl overflow-hidden"
-          style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.15), 0 16px 40px rgba(0,0,0,0.5)" }}>
-          <img src={DEFAULT_PROFILE_IMAGE} alt="Rahul Rachamalla" className="w-full h-full object-cover object-center" />
-          <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#0a0e1a] to-transparent" />
-        </div>
-      </motion.div>
-
       {/* Left: text content */}
-      <div className="flex-1 flex flex-col justify-center">
+      <div className="flex flex-col justify-center">
         <motion.p variants={item} className="font-mono text-violet-400 text-base mb-5 tracking-widest">
           Hi, my name is
         </motion.p>
@@ -178,6 +169,20 @@ export default function HeroContent() {
           <span className="text-violet-400 font-medium">Copa Labs</span>. Beyond work, I'm an{" "}
           <span className="text-violet-400 font-medium">Ironman finisher</span> and endurance athlete committed to pushing physical limits.
         </motion.p>
+
+        {/* Profile photo — inline, above CTAs */}
+        <motion.div variants={item} className="flex justify-center mb-10">
+          <div
+            className="relative w-64 sm:w-80 rounded-2xl overflow-hidden"
+            style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.15), 0 24px 48px rgba(0,0,0,0.5)" }}
+          >
+            <img
+              src={DEFAULT_PROFILE_IMAGE}
+              alt="Rahul Rachamalla"
+              className="w-full h-auto"
+            />
+          </div>
+        </motion.div>
 
         {/* Social + CTAs */}
         <motion.div variants={item} className="flex items-center gap-5 mb-8">
@@ -270,23 +275,7 @@ export default function HeroContent() {
         </motion.div>
       </div>
 
-      {/* Right: profile photo */}
-      <motion.div
-        variants={item}
-        className="hidden lg:flex flex-shrink-0 ml-16 items-center justify-center"
-      >
-        <div
-          className="relative w-80 xl:w-[26rem] rounded-2xl overflow-hidden"
-          style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.15), 0 32px 64px rgba(0,0,0,0.5)" }}
-        >
-          <div className="absolute -inset-4 rounded-3xl bg-violet-500/10 blur-2xl -z-10" />
-          <img
-            src={DEFAULT_PROFILE_IMAGE}
-            alt="Rahul Rachamalla"
-            className="w-full h-auto object-contain"
-          />
-        </div>
-      </motion.div>
+
     </motion.div>
   );
 }
