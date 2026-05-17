@@ -124,7 +124,7 @@ export default function HeroContent() {
       <motion.div variants={item} className="lg:hidden flex justify-center mb-10">
         <div className="relative w-48 h-56 rounded-2xl overflow-hidden"
           style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.15), 0 16px 40px rgba(0,0,0,0.5)" }}>
-          <img src={DEFAULT_PROFILE_IMAGE} alt="Rahul Rachamalla" className="w-full h-full object-cover object-top" />
+          <img src={DEFAULT_PROFILE_IMAGE} alt="Rahul Rachamalla" className="w-full h-full object-cover object-center" />
           <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#0a0e1a] to-transparent" />
         </div>
       </motion.div>
@@ -283,7 +283,7 @@ export default function HeroContent() {
           <img
             src={DEFAULT_PROFILE_IMAGE}
             alt="Rahul Rachamalla"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover object-center"
           />
           <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#0a0e1a] to-transparent" />
         </div>
