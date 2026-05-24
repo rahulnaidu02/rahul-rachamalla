@@ -168,10 +168,10 @@ export default function HeroContent() {
 
         {/* Body paragraphs — consistent typography */}
         <motion.p variants={item} className="text-white/60 mb-5" style={BODY_STYLE}>
-          I'm a <span className="text-violet-400 font-medium">product builder</span> focused on{" "}
-          <span className="text-violet-400 font-medium">conversational AI</span> and{" "}
-          <span className="text-violet-400 font-medium">physical AI</span>. I've spent the last decade building AI systems,
-          connected infrastructure, IoT platforms, and edge intelligence at{" "}
+          At the intersection of <span className="text-violet-400 font-medium">Conversational AI</span>,{" "}
+          <span className="text-violet-400 font-medium">Physical AI</span>, and{" "}
+          <span className="text-violet-400 font-medium">real-world operations</span> — I'm a product builder who ships.
+          Over the last decade I've built AI systems, connected infrastructure, IoT platforms, and edge intelligence at{" "}
           <span className="text-violet-400 font-medium">Amazon</span>,{" "}
           <span className="text-violet-400 font-medium">HPE Aruba</span>,{" "}
           <span className="text-violet-400 font-medium">Cisco</span>, and{" "}
