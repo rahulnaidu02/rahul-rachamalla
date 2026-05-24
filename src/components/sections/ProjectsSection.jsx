@@ -17,7 +17,7 @@ const PROJECTS = [
     flagship: true,
   },
   {
-    title: "PHYCON — Conversational AI for Hardware Founders",
+    title: "PHYCON: Conversational AI for Hardware Founders",
     subtitle: "World's First Voice Community for Physical AI + Conversational AI",
     description:
       "PHYCON is a voice-powered AI community and assistant built specifically for founders navigating the intersection of Physical AI and Conversational AI. Choose your lens — Sage Founder, Investor, or Product-Market Fit Critic — and get real-time voice guidance on conversational AI architecture, setting up voice agents, customer traction, angel fundraising, and go-to-market strategy. Built for hardware founders who need AI that understands atoms, not just bits.",
@@ -29,12 +29,11 @@ const PROJECTS = [
     heroImage: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/0f9b732f1_generated_image.png",
   },
   {
-    title: "Priya's Tiffin — WhatsApp Food Ordering PWA",
+    title: "Priya's Tiffin: WhatsApp Food Ordering PWA",
     subtitle: "Community Commerce · Home Kitchen Platform",
     description:
-      "A progressive web app built for home-food businesses like Priya's Tiffin to publish a dynamic daily menu through one permanent shareable link. Customers browse today's dishes, tap to add items, and submit their order directly via WhatsApp — no messy group threads, no app downloads required. The admin panel (passphrase-protected) lets the kitchen owner update the day's menu in seconds from any device. Built with Next.js and deployed on Vercel, with a Supabase backend for real-time menu and order state. Designed mobile-first as a lightweight PWA with offline support and instant load times.",
-    tags: ["PWA", "Next.js", "Supabase", "WhatsApp API", "Mobile UX", "Ordering", "Community Commerce", "Vercel"],
-    heroImage: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/7a1912003_generated_image.png",
+      "A progressive web app built for home-food businesses like Priya's Tiffin to publish a dynamic daily menu through one permanent shareable link. Customers browse today's dishes, tap to add items, and submit their order directly via WhatsApp. No messy group threads, no app downloads required. The admin panel (passphrase-protected) lets the kitchen owner update the day's menu in seconds from any device. Built with Next.js and deployed on Vercel, with a Supabase backend for real-time menu and order state. Designed mobile-first as a lightweight PWA with offline support and instant load times.",
+    heroImage: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/08e4585f2_image.png",
     buttons: [
       { label: "Live Demo", href: "https://priya-tiffin.vercel.app" },
       { label: "GitHub", href: "https://github.com/rahulnaidu02" },
@@ -207,7 +206,7 @@ function CopaFleetGroup({ project, index, cardNumber }) {
       {/* Shared description below */}
       <div className="p-8 flex flex-col gap-4 border-t border-white/6">
         <p className="font-mono text-violet-400/70 tracking-wider uppercase" style={{ fontSize: "0.8rem" }}>{project.subtitle}</p>
-        <p className="font-inter text-white/58 leading-[1.85]" style={{ fontSize: "1.0625rem" }}>{project.description}</p>
+        <p className="font-inter text-white/58 leading-[1.85]" style={{ fontSize: "1.175rem" }}>{project.description}</p>
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <span key={tag} className="font-inter tracking-wide px-3.5 py-1.5 rounded-full border bg-violet-400/7 border-violet-400/15 text-violet-300/65" style={{ fontSize: "0.875rem" }}>
@@ -256,7 +255,7 @@ function SO101Card({ project, index, cardNumber }) {
       {/* Description below */}
       <div className="p-8 flex flex-col gap-4 border-t border-white/6">
         <p className="font-mono text-violet-400/70 tracking-wider uppercase" style={{ fontSize: "0.8rem" }}>{project.subtitle}</p>
-        <p className="font-inter text-white/58 leading-[1.85]" style={{ fontSize: "1.0625rem" }}>{project.description}</p>
+        <p className="font-inter text-white/58 leading-[1.85]" style={{ fontSize: "1.175rem" }}>{project.description}</p>
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <span key={tag} className="font-inter tracking-wide px-3.5 py-1.5 rounded-full border bg-violet-400/7 border-violet-400/15 text-violet-300/65" style={{ fontSize: "0.875rem" }}>
@@ -332,7 +331,7 @@ function ProjectCard({ project, index, cardNumber }) {
 
       <div className="p-8 lg:p-10 flex flex-col gap-5">
 
-        <p className="font-inter text-white/58 leading-[1.85]" style={{ fontSize: "1.0625rem" }}>
+        <p className="font-inter text-white/58 leading-[1.85]" style={{ fontSize: "1.175rem" }}>
           {flagship
             ? <>Patent-pending sanitation infrastructure system combining <span className="text-violet-300 font-semibold">Physical AI</span>, predictive maintenance, telemetry, user access control, and autonomous servicing workflows for real-world field deployments.</>
             : description}
