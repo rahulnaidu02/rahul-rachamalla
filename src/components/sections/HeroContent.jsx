@@ -190,9 +190,8 @@ export default function HeroContent() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
               { value: "Top 0.3%", label: "Global Dictation Speed" },
+              { value: "200 Apps", label: "Integrated & Used Across" },
               { value: "138 WPM", label: "Words Per Minute" },
-              { value: "211,471", label: "Words Dictated" },
-              { value: "54 Days", label: "Longest Streak" },
             ].map(({ value, label }) => (
               <div
                 key={label}
