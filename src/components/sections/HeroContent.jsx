@@ -99,7 +99,7 @@ const BODY_STYLE = {
 
 export default function HeroContent() {
   const typedHeadline = useTypewriter(
-    "I build and ship products at the intersection of Physical AI, Conversational AI, and real-world operations.",
+    "I build and ship products at the intersection of Conversational AI, Physical AI, and real-world operations.",
     900,
     38
   );
