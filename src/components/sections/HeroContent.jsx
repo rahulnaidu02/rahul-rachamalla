@@ -99,7 +99,7 @@ const BODY_STYLE = {
 
 export default function HeroContent() {
   const typedHeadline = useTypewriter(
-    "I build and ship products across AI, connected hardware, and real-world operations.",
+    "I build and ship products at the intersection of Physical AI, Conversational AI, and real-world operations.",
     900,
     38
   );
@@ -183,6 +183,27 @@ export default function HeroContent() {
           <span className="text-violet-400 font-medium">Copa Labs</span>. Beyond work, I'm an{" "}
           <span className="text-violet-400 font-medium">Ironman finisher</span> and endurance athlete committed to pushing physical limits.
         </motion.p>
+
+        {/* Wispr Flow stats */}
+        <motion.div variants={item} className="mb-8">
+          <p className="font-mono text-white/30 tracking-widest uppercase mb-4" style={{ fontSize: "0.75rem" }}>Wispr Flow · Voice Productivity</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {[
+              { value: "Top 0.3%", label: "Global Dictation Speed" },
+              { value: "138 WPM", label: "Words Per Minute" },
+              { value: "211,471", label: "Words Dictated" },
+              { value: "54 Days", label: "Longest Streak" },
+            ].map(({ value, label }) => (
+              <div
+                key={label}
+                className="flex flex-col gap-1 px-4 py-3.5 rounded-xl border border-violet-400/15 bg-violet-400/5 hover:border-violet-400/30 hover:bg-violet-400/8 transition-all duration-200"
+              >
+                <span className="font-syne font-bold text-violet-300" style={{ fontSize: "1.25rem" }}>{value}</span>
+                <span className="font-mono text-white/40 leading-tight" style={{ fontSize: "0.72rem" }}>{label}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* Social + CTAs */}
         <motion.div variants={item} className="flex items-center gap-5 mb-8">
