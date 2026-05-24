@@ -354,7 +354,7 @@ function ProjectCard({ project, index, cardNumber }) {
         </div>
 
         <div className="flex flex-wrap gap-3 pt-1">
-          {buttons.map((btn) => (
+          {(buttons || []).map((btn) => (
             <ProjectButton key={btn.label} label={btn.label} href={btn.href} />
           ))}
         </div>
