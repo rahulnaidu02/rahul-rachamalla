@@ -26,7 +26,7 @@ const PROJECTS = [
       { label: "View Project", href: "https://phyconfounder.base44.app/" },
       { label: "GitHub", href: "https://github.com/rahulnaidu02" },
     ],
-    heroImage: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/43093a14f_Screenshot2025-10-05144427.png",
+    heroImage: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/0f9b732f1_generated_image.png",
   },
   {
     type: "copa-fleet-group",
