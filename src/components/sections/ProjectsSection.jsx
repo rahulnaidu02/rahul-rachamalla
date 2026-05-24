@@ -36,7 +36,7 @@ const PROJECTS = [
     heroImage: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/08e4585f2_image.png",
     buttons: [
       { label: "Live Demo", href: "https://priya-tiffin.vercel.app" },
-      { label: "GitHub", href: "https://github.com/rahulnaidu02" },
+      { label: "GitHub", href: "https://github.com/rahulnaidu02/priya-tiffin" },
     ],
   },
   {
