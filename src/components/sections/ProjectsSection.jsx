@@ -17,6 +17,18 @@ const PROJECTS = [
     flagship: true,
   },
   {
+    title: "PHYCON — Conversational AI for Hardware Founders",
+    subtitle: "World's First Voice Community for Physical AI + Conversational AI",
+    description:
+      "PHYCON is a voice-powered AI community and assistant built specifically for founders navigating the intersection of Physical AI and Conversational AI. Choose your lens — Sage Founder, Investor, or Product-Market Fit Critic — and get real-time voice guidance on conversational AI architecture, setting up voice agents, customer traction, angel fundraising, and go-to-market strategy. Built for hardware founders who need AI that understands atoms, not just bits.",
+    tags: ["Voice AI", "Conversational AI", "Physical AI", "Hardware Founders", "LLM", "Community", "Go-To-Market"],
+    buttons: [
+      { label: "View Project", href: "https://phyconfounder.base44.app/" },
+      { label: "GitHub", href: "https://github.com/rahulnaidu02" },
+    ],
+    heroImage: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/43093a14f_Screenshot2025-10-05144427.png",
+  },
+  {
     type: "copa-fleet-group",
     images: [
       "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/89d9de61c_Screenshot2026-05-13062833.png",
@@ -39,7 +51,7 @@ const PROJECTS = [
     image: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/364eb1e61_RoboticArm.png",
     buttons: [
       { label: "View Project", href: "#" },
-      { label: "GitHub", href: "#" },
+      { label: "GitHub", href: "https://github.com/rahulnaidu02" },
     ],
   },
   {
@@ -90,14 +102,6 @@ const PROJECTS = [
     description:
       "Created a smart mirror using Raspberry Pi and an old television with a DIY mirror surface. Interactive display system combining hardware and web technologies.",
     tags: ["Raspberry Pi", "IoT", "Smart Home", "DIY", "Hardware"],
-    buttons: [{ label: "View Project", href: "#" }],
-  },
-  {
-    title: "Conversational AI for Hardware Founders",
-    subtitle: "AI Support & Knowledge Assistant",
-    description:
-      "Conversational AI assistant concept to help hardware founders navigate prototyping, sourcing, manufacturing, fundraising, and field operations.",
-    tags: ["LLM", "Hardware Startups", "AI Assistant", "Knowledge Systems"],
     buttons: [{ label: "View Project", href: "#" }],
   },
   {
