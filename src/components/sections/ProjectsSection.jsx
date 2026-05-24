@@ -338,7 +338,7 @@ function ProjectCard({ project, index, cardNumber }) {
         </p>
 
         <div className="flex flex-wrap gap-2">
-          {tags.map((tag) => (
+          {(tags || []).map((tag) => (
             <span
               key={tag}
               className={`font-inter tracking-wide px-3.5 py-1.5 rounded-full border ${
