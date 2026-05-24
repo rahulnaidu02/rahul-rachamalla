@@ -29,6 +29,18 @@ const PROJECTS = [
     heroImage: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/0f9b732f1_generated_image.png",
   },
   {
+    title: "Priya's Tiffin — WhatsApp Food Ordering PWA",
+    subtitle: "Community Commerce · Home Kitchen Platform",
+    description:
+      "A progressive web app built for home-food businesses like Priya's Tiffin to publish a dynamic daily menu through one permanent shareable link. Customers browse today's dishes, tap to add items, and submit their order directly via WhatsApp — no messy group threads, no app downloads required. The admin panel (passphrase-protected) lets the kitchen owner update the day's menu in seconds from any device. Built with Next.js and deployed on Vercel, with a Supabase backend for real-time menu and order state. Designed mobile-first as a lightweight PWA with offline support and instant load times.",
+    tags: ["PWA", "Next.js", "Supabase", "WhatsApp API", "Mobile UX", "Ordering", "Community Commerce", "Vercel"],
+    heroImage: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/7a1912003_generated_image.png",
+    buttons: [
+      { label: "Live Demo", href: "https://priya-tiffin.vercel.app" },
+      { label: "GitHub", href: "https://github.com/rahulnaidu02" },
+    ],
+  },
+  {
     type: "copa-fleet-group",
     images: [
       "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/89d9de61c_Screenshot2026-05-13062833.png",
@@ -72,17 +84,6 @@ const PROJECTS = [
     description:
       "Dual-screen speech translation concept where each person sees live subtitles in their preferred language during face-to-face conversations.",
     tags: ["Speech-to-Text", "Translation", "Real-Time AI", "Multilingual UX"],
-    buttons: [
-      { label: "View Demo", href: "#" },
-      { label: "GitHub", href: "#" },
-    ],
-  },
-  {
-    title: "WhatsApp Food Ordering PWA",
-    subtitle: "Community Commerce Platform",
-    description:
-      "Progressive web app for home-food businesses to publish dynamic daily menus through one permanent link and manage community orders without messy WhatsApp threads.",
-    tags: ["PWA", "Supabase", "Mobile UX", "Ordering", "Community Commerce"],
     buttons: [
       { label: "View Demo", href: "#" },
       { label: "GitHub", href: "#" },
