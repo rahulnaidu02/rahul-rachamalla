@@ -40,6 +40,16 @@ const PROJECTS = [
     ],
   },
   {
+    title: "KeyLine: Voice-First Access Control",
+    subtitle: "Conversational Voice Bot · Access Control · Vapi + Supabase",
+    description:
+      "KeyLine is a voice-first access-control service. Operators register units and rotate PIN codes via voice; end users call a number, authenticate by name and unit ID, and the voice agent reads back the active code in real time. Stack: Vapi (telephony + voice agent) → Supabase Edge Function (Deno) → Supabase Postgres. See the GitHub repo for full schema, edge function, Vapi assistant config, and a DEMO.md cheat sheet for live demos.",
+    tags: ["Voice AI", "Vapi", "Supabase", "Access Control", "Deno", "Conversational AI", "Edge Functions"],
+    buttons: [
+      { label: "View on GitHub", href: "https://github.com/rahulnaidu02/keyline" },
+    ],
+  },
+  {
     type: "copa-fleet-group",
     images: [
       "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/89d9de61c_Screenshot2026-05-13062833.png",
@@ -87,14 +97,6 @@ const PROJECTS = [
       { label: "View Demo", href: "#" },
       { label: "GitHub", href: "#" },
     ],
-  },
-  {
-    title: "1-800 Voice Automation System",
-    subtitle: "Conversational Voice Bot for Hospitality",
-    description:
-      "Conversational voice bot and actual 1-800 number for customer service automation in the hospitality industry. Natural speech workflows for automated resolution and customer support.",
-    tags: ["Voice AI", "1-800 Number", "Hospitality", "Automation", "Conversational AI"],
-    buttons: [{ label: "View Project", href: "#" }],
   },
   {
     title: "Smart Mirror",
