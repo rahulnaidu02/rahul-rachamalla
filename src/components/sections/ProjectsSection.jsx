@@ -42,6 +42,7 @@ const PROJECTS = [
   {
     title: "KeyLine: Voice-First Access Control",
     subtitle: "Conversational Voice Bot · Access Control · Vapi + Supabase",
+    heroImage: "https://vapi.ai/og.png",
     description:
       "KeyLine is a voice-first access-control service. Operators register units and rotate PIN codes via voice; end users call a number, authenticate by name and unit ID, and the voice agent reads back the active code in real time. Stack: Vapi (telephony + voice agent) → Supabase Edge Function (Deno) → Supabase Postgres. See the GitHub repo for full schema, edge function, Vapi assistant config, and a DEMO.md cheat sheet for live demos.",
     tags: ["Voice AI", "Vapi", "Supabase", "Access Control", "Deno", "Conversational AI", "Edge Functions"],
