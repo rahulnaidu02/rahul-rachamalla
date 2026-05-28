@@ -16,7 +16,7 @@ export default function SubstackSection() {
       <SectionHeading num="10" title="Substack" />
 
       <p className="font-inter text-white/55 leading-[1.85] mb-10" style={{ fontSize: "1.0625rem" }}>
-        Writing about physical AI, hardware startups, endurance sports, and the intersection of mind and machine. Articles linked here directly — no extra clicks.
+        Writing about physical AI, hardware startups, endurance sports, and the intersection of mind and machine. Articles linked here directly, no extra clicks.
       </p>
 
       {ARTICLES.length === 0 ? (

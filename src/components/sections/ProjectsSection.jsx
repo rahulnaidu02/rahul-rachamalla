@@ -20,7 +20,7 @@ const PROJECTS = [
     title: "PHYCON: Conversational AI for Hardware Founders",
     subtitle: "World's First Voice Community for Physical AI + Conversational AI",
     description:
-      "PHYCON is a voice-powered AI community and assistant built specifically for founders navigating the intersection of Physical AI and Conversational AI. Choose your lens — Sage Founder, Investor, or Product-Market Fit Critic — and get real-time voice guidance on conversational AI architecture, setting up voice agents, customer traction, angel fundraising, and go-to-market strategy. Built for hardware founders who need AI that understands atoms, not just bits.",
+      "PHYCON is a voice-powered AI community and assistant built specifically for founders navigating the intersection of Physical AI and Conversational AI. Choose your lens (Sage Founder, Investor, or Product-Market Fit Critic) and get real-time voice guidance on conversational AI architecture, setting up voice agents, customer traction, angel fundraising, and go-to-market strategy. Built for hardware founders who need AI that understands atoms, not just bits.",
     tags: ["Voice AI", "Conversational AI", "Physical AI", "Hardware Founders", "LLM", "Community", "Go-To-Market"],
     buttons: [
       { label: "View Project", href: "https://phyconfounder.base44.app/" },
