@@ -29,6 +29,17 @@ const PROJECTS = [
     heroImage: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/0f9b732f1_generated_image.png",
   },
   {
+    title: "KeyLine: Voice Agent for Access Control",
+    subtitle: "Conversational Voice Bot · Access Control · Vapi + Supabase",
+    heroImage: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/aefda4ddb_generated_image.png",
+    description:
+      "KeyLine is a voice-first access-control service. Operators register units and rotate PIN codes via voice; end users call a number, authenticate by name and unit ID, and the voice agent reads back the active code in real time. Stack: Vapi (telephony + voice agent) → Supabase Edge Function (Deno) → Supabase Postgres. See the GitHub repo for full schema, edge function, Vapi assistant config, and a DEMO.md cheat sheet for live demos.",
+    tags: ["Voice AI", "Vapi", "Supabase", "Access Control", "Deno", "Conversational AI", "Edge Functions"],
+    buttons: [
+      { label: "View on GitHub", href: "https://github.com/rahulnaidu02/keyline" },
+    ],
+  },
+  {
     title: "Priya's Tiffin: WhatsApp Food Ordering PWA",
     subtitle: "Community Commerce · Home Kitchen Platform",
     description:
@@ -37,17 +48,6 @@ const PROJECTS = [
     buttons: [
       { label: "Live Demo", href: "https://priya-tiffin.vercel.app" },
       { label: "GitHub", href: "https://github.com/rahulnaidu02/priya-tiffin" },
-    ],
-  },
-  {
-    title: "KeyLine: Voice-First Access Control",
-    subtitle: "Conversational Voice Bot · Access Control · Vapi + Supabase",
-    heroImage: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/aefda4ddb_generated_image.png",
-    description:
-      "KeyLine is a voice-first access-control service. Operators register units and rotate PIN codes via voice; end users call a number, authenticate by name and unit ID, and the voice agent reads back the active code in real time. Stack: Vapi (telephony + voice agent) → Supabase Edge Function (Deno) → Supabase Postgres. See the GitHub repo for full schema, edge function, Vapi assistant config, and a DEMO.md cheat sheet for live demos.",
-    tags: ["Voice AI", "Vapi", "Supabase", "Access Control", "Deno", "Conversational AI", "Edge Functions"],
-    buttons: [
-      { label: "View on GitHub", href: "https://github.com/rahulnaidu02/keyline" },
     ],
   },
   {
