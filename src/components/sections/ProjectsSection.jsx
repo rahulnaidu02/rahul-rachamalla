@@ -58,7 +58,18 @@ const PROJECTS = [
       "Harbor CRM helps startup founders coordinate outreach without stepping on each other's toes. The platform automatically assigns investor and advisor prospects across team members, generates personalized LinkedIn messages using profile context, tracks responses and follow-ups, and provides a shared pipeline view. Built with a LinkedIn-style messaging experience, automated follow-up workflows, in-app notifications, and team analytics — enabling founders to run high-volume fundraising and advisor outreach with zero duplicate contact attempts.",
     tags: ["Claude AI", "Next.js", "Supabase", "Vercel", "CRM", "AI Message Drafting", "Founder Tools", "Outreach Automation"],
     buttons: [
-      { label: "Live Demo", href: "#" },
+      { label: "Live Demo", href: "https://angel-advisor-crm.vercel.app/" },
+      { label: "GitHub", href: "https://github.com/rahulnaidu02/angel-advisor-crm" },
+    ],
+  },
+  {
+    title: "Priya's Tiffin: WhatsApp Food Ordering PWA",
+    subtitle: "WhatsApp-Native Food Ordering · Progressive Web App",
+    description:
+      "A WhatsApp-first food ordering platform built for home cooks and small tiffin services. Customers place orders directly through WhatsApp using a conversational flow, while operators manage menus, orders, and delivery tracking through a lightweight PWA dashboard. Designed for low-friction onboarding with zero app downloads required.",
+    tags: ["WhatsApp API", "PWA", "Food Tech", "Conversational Commerce", "Small Business"],
+    buttons: [
+      { label: "View Project", href: "#" },
       { label: "GitHub", href: "#" },
     ],
   },
