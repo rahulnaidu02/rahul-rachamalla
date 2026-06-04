@@ -40,17 +40,6 @@ const PROJECTS = [
     ],
   },
   {
-    title: "Priya's Tiffin: WhatsApp Food Ordering PWA",
-    subtitle: "Community Commerce · Home Kitchen Platform",
-    description:
-      "A progressive web app built for home-food businesses like Priya's Tiffin to publish a dynamic daily menu through one permanent shareable link. Customers browse today's dishes, tap to add items, and submit their order directly via WhatsApp. No messy group threads, no app downloads required. The admin panel (passphrase-protected) lets the kitchen owner update the day's menu in seconds from any device. Built with Next.js and deployed on Vercel, with a Supabase backend for real-time menu and order state. Designed mobile-first as a lightweight PWA with offline support and instant load times.",
-    heroImage: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/08e4585f2_image.png",
-    buttons: [
-      { label: "Live Demo", href: "https://priya-tiffin.vercel.app" },
-      { label: "GitHub", href: "https://github.com/rahulnaidu02/priya-tiffin" },
-    ],
-  },
-  {
     title: "Harbor CRM",
     subtitle: "AI-Powered Founder Outreach CRM · Claude AI + Supabase + Next.js",
     heroImage: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/752ee17c1_image.png",
@@ -64,13 +53,13 @@ const PROJECTS = [
   },
   {
     title: "Priya's Tiffin: WhatsApp Food Ordering PWA",
-    subtitle: "WhatsApp-Native Food Ordering · Progressive Web App",
+    subtitle: "Community Commerce · Home Kitchen Platform",
     description:
-      "A WhatsApp-first food ordering platform built for home cooks and small tiffin services. Customers place orders directly through WhatsApp using a conversational flow, while operators manage menus, orders, and delivery tracking through a lightweight PWA dashboard. Designed for low-friction onboarding with zero app downloads required.",
-    tags: ["WhatsApp API", "PWA", "Food Tech", "Conversational Commerce", "Small Business"],
+      "A progressive web app built for home-food businesses like Priya's Tiffin to publish a dynamic daily menu through one permanent shareable link. Customers browse today's dishes, tap to add items, and submit their order directly via WhatsApp. No messy group threads, no app downloads required. The admin panel (passphrase-protected) lets the kitchen owner update the day's menu in seconds from any device. Built with Next.js and deployed on Vercel, with a Supabase backend for real-time menu and order state. Designed mobile-first as a lightweight PWA with offline support and instant load times.",
+    heroImage: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/08e4585f2_image.png",
     buttons: [
-      { label: "View Project", href: "#" },
-      { label: "GitHub", href: "#" },
+      { label: "Live Demo", href: "https://priya-tiffin.vercel.app" },
+      { label: "GitHub", href: "https://github.com/rahulnaidu02/priya-tiffin" },
     ],
   },
   {
