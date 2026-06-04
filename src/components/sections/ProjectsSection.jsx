@@ -429,12 +429,14 @@ export default function ProjectsSection() {
 
       {/* Counter + dot indicators */}
       <div className="flex items-center justify-between mb-5">
-        <div className="flex items-center gap-2">
-          <span className="font-syne font-bold text-violet-300" style={{ fontSize: "1.75rem" }}>{current + 1}</span>
-          <span className="font-mono text-white/30" style={{ fontSize: "0.95rem" }}>/ {PROJECTS.length}</span>
-          <span className="font-mono text-white/25 ml-2 hidden sm:inline" style={{ fontSize: "0.8rem" }}>
-            {p.title.length > 40 ? p.title.slice(0, 40) + "…" : p.title}
-          </span>
+        <div className="flex items-center gap-3">
+          <span className="font-syne font-bold text-violet-300" style={{ fontSize: "2.75rem", lineHeight: 1 }}>{current + 1}</span>
+          <div className="flex flex-col">
+            <span className="font-mono text-white/40" style={{ fontSize: "1.1rem" }}>/ {PROJECTS.length}</span>
+            <span className="font-mono text-white/30 hidden sm:inline" style={{ fontSize: "0.82rem" }}>
+              {p.title.length > 44 ? p.title.slice(0, 44) + "…" : p.title}
+            </span>
+          </div>
         </div>
         <div className="hidden sm:flex items-center gap-1.5">
           {PROJECTS.map((_, i) => (
@@ -482,20 +484,21 @@ export default function ProjectsSection() {
             />
             {/* Arrow button */}
             <motion.div
-              animate={{ scale: hoveredSide === "prev" ? 1.15 : 1 }}
+              animate={{ scale: hoveredSide === "prev" ? 1.18 : 1, x: hoveredSide === "prev" ? -2 : 0 }}
               transition={{ duration: 0.2 }}
-              className="absolute right-0 z-10 w-9 h-16 rounded-r-xl flex items-center justify-center"
+              className="absolute right-0 z-10 w-11 h-20 rounded-r-2xl flex items-center justify-center"
               style={{
                 background: hoveredSide === "prev"
-                  ? "rgba(167,139,250,0.25)"
-                  : "rgba(167,139,250,0.1)",
-                backdropFilter: "blur(8px)",
-                border: "1px solid rgba(167,139,250,0.25)",
+                  ? "linear-gradient(135deg, rgba(167,139,250,0.45), rgba(99,102,241,0.35))"
+                  : "linear-gradient(135deg, rgba(167,139,250,0.18), rgba(99,102,241,0.12))",
+                backdropFilter: "blur(12px)",
+                border: "1.5px solid rgba(167,139,250,0.5)",
                 borderLeft: "none",
-                transition: "background 0.2s",
+                boxShadow: hoveredSide === "prev" ? "4px 0 24px rgba(167,139,250,0.3)" : "2px 0 12px rgba(167,139,250,0.1)",
+                transition: "background 0.2s, box-shadow 0.2s",
               }}
             >
-              <ChevronLeft className="w-5 h-5 text-violet-300" />
+              <ChevronLeft className="w-6 h-6 text-violet-200" strokeWidth={2.5} />
             </motion.div>
 
             {/* Hover preview tooltip */}
@@ -551,20 +554,21 @@ export default function ProjectsSection() {
             />
             {/* Arrow button */}
             <motion.div
-              animate={{ scale: hoveredSide === "next" ? 1.15 : 1 }}
+              animate={{ scale: hoveredSide === "next" ? 1.18 : 1, x: hoveredSide === "next" ? 2 : 0 }}
               transition={{ duration: 0.2 }}
-              className="absolute left-0 z-10 w-9 h-16 rounded-l-xl flex items-center justify-center"
+              className="absolute left-0 z-10 w-11 h-20 rounded-l-2xl flex items-center justify-center"
               style={{
                 background: hoveredSide === "next"
-                  ? "rgba(167,139,250,0.25)"
-                  : "rgba(167,139,250,0.1)",
-                backdropFilter: "blur(8px)",
-                border: "1px solid rgba(167,139,250,0.25)",
+                  ? "linear-gradient(225deg, rgba(167,139,250,0.45), rgba(99,102,241,0.35))"
+                  : "linear-gradient(225deg, rgba(167,139,250,0.18), rgba(99,102,241,0.12))",
+                backdropFilter: "blur(12px)",
+                border: "1.5px solid rgba(167,139,250,0.5)",
                 borderRight: "none",
-                transition: "background 0.2s",
+                boxShadow: hoveredSide === "next" ? "-4px 0 24px rgba(167,139,250,0.3)" : "-2px 0 12px rgba(167,139,250,0.1)",
+                transition: "background 0.2s, box-shadow 0.2s",
               }}
             >
-              <ChevronRight className="w-5 h-5 text-violet-300" />
+              <ChevronRight className="w-6 h-6 text-violet-200" strokeWidth={2.5} />
             </motion.div>
 
             {/* Hover preview tooltip */}
@@ -591,21 +595,48 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* Active card */}
-        <div style={{ margin: "0 2.5rem", overflow: "hidden" }}>
-          <AnimatePresence mode="wait" custom={direction}>
-            <motion.div
-              key={current}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.32, ease: "easeInOut" }}
-            >
-              {renderCard(p, 0, current + 1)}
-            </motion.div>
-          </AnimatePresence>
+        {/* Active card with deck-of-cards stack behind */}
+        <div style={{ margin: "0 2.5rem", position: "relative" }}>
+          {/* Card stack layer 3 — furthest back */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              borderRadius: "1rem",
+              background: "rgba(167,139,250,0.04)",
+              border: "1px solid rgba(167,139,250,0.08)",
+              transform: "translateY(12px) scale(0.95)",
+              zIndex: 0,
+            }}
+          />
+          {/* Card stack layer 2 */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              borderRadius: "1rem",
+              background: "rgba(167,139,250,0.06)",
+              border: "1px solid rgba(167,139,250,0.12)",
+              transform: "translateY(6px) scale(0.975)",
+              zIndex: 1,
+            }}
+          />
+          {/* Active card on top */}
+          <div style={{ position: "relative", zIndex: 2, overflow: "hidden", borderRadius: "1rem" }}>
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={current}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.32, ease: "easeInOut" }}
+              >
+                {renderCard(p, 0, current + 1)}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </motion.div>
