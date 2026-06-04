@@ -595,48 +595,21 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* Active card with deck-of-cards stack behind */}
-        <div style={{ margin: "0 2.5rem", position: "relative" }}>
-          {/* Card stack layer 3 — furthest back */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              borderRadius: "1rem",
-              background: "rgba(167,139,250,0.04)",
-              border: "1px solid rgba(167,139,250,0.08)",
-              transform: "translateY(12px) scale(0.95)",
-              zIndex: 0,
-            }}
-          />
-          {/* Card stack layer 2 */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              borderRadius: "1rem",
-              background: "rgba(167,139,250,0.06)",
-              border: "1px solid rgba(167,139,250,0.12)",
-              transform: "translateY(6px) scale(0.975)",
-              zIndex: 1,
-            }}
-          />
-          {/* Active card on top */}
-          <div style={{ position: "relative", zIndex: 2, overflow: "hidden", borderRadius: "1rem" }}>
-            <AnimatePresence mode="wait" custom={direction}>
-              <motion.div
-                key={current}
-                custom={direction}
-                variants={variants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.32, ease: "easeInOut" }}
-              >
-                {renderCard(p, 0, current + 1)}
-              </motion.div>
-            </AnimatePresence>
-          </div>
+        {/* Active card */}
+        <div style={{ margin: "0 2.5rem", overflow: "hidden" }}>
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={current}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.32, ease: "easeInOut" }}
+            >
+              {renderCard(p, 0, current + 1)}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </motion.div>
