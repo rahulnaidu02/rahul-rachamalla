@@ -51,6 +51,18 @@ const PROJECTS = [
     ],
   },
   {
+    title: "Harbor CRM",
+    subtitle: "AI-Powered Founder Outreach CRM · Claude AI + Supabase + Next.js",
+    heroImage: "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/752ee17c1_image.png",
+    description:
+      "Harbor CRM helps startup founders coordinate outreach without stepping on each other's toes. The platform automatically assigns investor and advisor prospects across team members, generates personalized LinkedIn messages using profile context, tracks responses and follow-ups, and provides a shared pipeline view. Built with a LinkedIn-style messaging experience, automated follow-up workflows, in-app notifications, and team analytics — enabling founders to run high-volume fundraising and advisor outreach with zero duplicate contact attempts.",
+    tags: ["Claude AI", "Next.js", "Supabase", "Vercel", "CRM", "AI Message Drafting", "Founder Tools", "Outreach Automation"],
+    buttons: [
+      { label: "Live Demo", href: "#" },
+      { label: "GitHub", href: "#" },
+    ],
+  },
+  {
     type: "copa-fleet-group",
     images: [
       "https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/89d9de61c_Screenshot2026-05-13062833.png",
