@@ -98,7 +98,7 @@ export default function FounderSection() {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <SectionHeading num="03" title="AI Founder & Builder" />
+      <SectionHeading num="03" title="Founder & Builder" />
 
       {/* Split layout with robotic arm and narrative */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 mb-14">

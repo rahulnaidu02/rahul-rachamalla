@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { Play, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Play, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 const PROJECTS = [
@@ -379,6 +380,25 @@ function ProjectCard({ project, index, cardNumber }) {
 }
 
 export default function ProjectsSection() {
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  const go = (next) => {
+    setDirection(next > current ? 1 : -1);
+    setCurrent(next);
+  };
+
+  const prev = () => go(current === 0 ? PROJECTS.length - 1 : current - 1);
+  const next = () => go(current === PROJECTS.length - 1 ? 0 : current + 1);
+
+  const p = PROJECTS[current];
+
+  const variants = {
+    enter: (dir) => ({ opacity: 0, x: dir > 0 ? 60 : -60 }),
+    center: { opacity: 1, x: 0 },
+    exit: (dir) => ({ opacity: 0, x: dir > 0 ? -60 : 60 }),
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -386,27 +406,71 @@ export default function ProjectsSection() {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <SectionHeading num="04" title="AI Projects" />
+      <SectionHeading num="02" title="AI Projects" />
 
-      <div className="flex flex-col gap-6">
-        {PROJECTS.map((p, i) => {
-          const cardNumber = i + 1;
-          return (
-            <div key={i} className="relative">
-              {/* Card number outside frame - hidden on mobile */}
-              <div className="absolute -left-16 top-0 hidden lg:flex items-center justify-center w-12 h-12">
-                <span className="font-syne font-bold text-violet-300" style={{ fontSize: "2.8rem" }}>{cardNumber}</span>
-              </div>
-              {p.type === "copa-fleet-group" ? (
-                <CopaFleetGroup project={p} index={i} cardNumber={cardNumber} />
-              ) : p.type === "so101" ? (
-                <SO101Card project={p} index={i} cardNumber={cardNumber} />
-              ) : (
-                <ProjectCard project={p} index={i} cardNumber={cardNumber} />
-              )}
-            </div>
-          );
-        })}
+      {/* Counter + arrows */}
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-3">
+          <span className="font-syne font-bold text-violet-300" style={{ fontSize: "2rem" }}>{current + 1}</span>
+          <span className="font-mono text-white/30" style={{ fontSize: "1rem" }}>/ {PROJECTS.length}</span>
+        </div>
+        <div className="flex items-center gap-3">
+          {/* Dot indicators */}
+          <div className="hidden sm:flex items-center gap-1.5 mr-4">
+            {PROJECTS.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => go(i)}
+                className={`rounded-full transition-all duration-300 ${
+                  i === current
+                    ? "w-6 h-2 bg-violet-400"
+                    : "w-2 h-2 bg-white/20 hover:bg-white/40"
+                }`}
+              />
+            ))}
+          </div>
+          <button
+            onClick={prev}
+            className="w-11 h-11 rounded-full border border-white/15 bg-white/4 flex items-center justify-center hover:border-violet-400/50 hover:bg-violet-400/10 transition-all duration-200 text-white/60 hover:text-violet-300"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={next}
+            className="w-11 h-11 rounded-full border border-white/15 bg-white/4 flex items-center justify-center hover:border-violet-400/50 hover:bg-violet-400/10 transition-all duration-200 text-white/60 hover:text-violet-300"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+
+      {/* Carousel */}
+      <div className="relative overflow-hidden">
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.div
+            key={current}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.35, ease: "easeInOut" }}
+          >
+            {p.type === "copa-fleet-group" ? (
+              <CopaFleetGroup project={p} index={0} cardNumber={current + 1} />
+            ) : p.type === "so101" ? (
+              <SO101Card project={p} index={0} cardNumber={current + 1} />
+            ) : (
+              <ProjectCard project={p} index={0} cardNumber={current + 1} />
+            )}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Bottom nav hint */}
+      <div className="flex justify-center gap-4 mt-6">
+        <button onClick={prev} className="font-mono text-xs text-white/25 hover:text-violet-400 transition-colors tracking-widest uppercase">← prev</button>
+        <button onClick={next} className="font-mono text-xs text-white/25 hover:text-violet-400 transition-colors tracking-widest uppercase">next →</button>
       </div>
     </motion.div>
   );

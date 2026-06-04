@@ -19,8 +19,8 @@ const DEFAULT_PROFILE_IMAGE = "https://media.base44.com/images/public/6a06176023
 export const NAV_ITEMS = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
-  { id: "founder", label: "Founder & Builder" },
   { id: "projects", label: "AI Projects" },
+  { id: "founder", label: "Founder & Builder" },
   { id: "ironman", label: "Ironman" },
   { id: "mountains", label: "Mountains" },
   { id: "mma", label: "MMA" },
@@ -153,17 +153,17 @@ export default function Home() {
             </motion.div>
           </section>
 
-          {/* Founder & Builder */}
-          <section ref={(el) => (sectionRefs.current["founder"] = el)} id="founder">
-            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.65, ease: "easeOut" }}>
-              <FounderSection />
-            </motion.div>
-          </section>
-
           {/* AI Projects */}
           <section ref={(el) => (sectionRefs.current["projects"] = el)} id="projects">
             <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0 }} transition={{ duration: 0.65, ease: "easeOut" }}>
               <ProjectsSection />
+            </motion.div>
+          </section>
+
+          {/* Founder & Builder */}
+          <section ref={(el) => (sectionRefs.current["founder"] = el)} id="founder">
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.65, ease: "easeOut" }}>
+              <FounderSection />
             </motion.div>
           </section>
 
