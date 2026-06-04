@@ -11,8 +11,8 @@ const SubstackIcon = () => (
 const NAV_ITEMS = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
-  { id: "founder", label: "Founder & Builder" },
   { id: "projects", label: "AI Projects" },
+  { id: "founder", label: "Founder & Builder" },
   { id: "ironman", label: "Ironman" },
   { id: "mountains", label: "Mountains" },
   { id: "mma", label: "MMA" },

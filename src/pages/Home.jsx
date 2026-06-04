@@ -21,6 +21,7 @@ export const NAV_ITEMS = [
   { id: "experience", label: "Experience" },
   { id: "projects", label: "AI Projects" },
   { id: "founder", label: "Founder & Builder" },
+
   { id: "ironman", label: "Ironman" },
   { id: "mountains", label: "Mountains" },
   { id: "mma", label: "MMA" },

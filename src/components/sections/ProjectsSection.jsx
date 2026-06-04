@@ -379,24 +379,43 @@ function ProjectCard({ project, index, cardNumber }) {
   );
 }
 
+function renderCard(p, idx, cardNum) {
+  if (p.type === "copa-fleet-group") return <CopaFleetGroup project={p} index={idx} cardNumber={cardNum} />;
+  if (p.type === "so101") return <SO101Card project={p} index={idx} cardNumber={cardNum} />;
+  return <ProjectCard project={p} index={idx} cardNumber={cardNum} />;
+}
+
 export default function ProjectsSection() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [hoveredSide, setHoveredSide] = useState(null); // 'prev' | 'next' | null
 
   const go = (next) => {
     setDirection(next > current ? 1 : -1);
     setCurrent(next);
   };
 
-  const prev = () => go(current === 0 ? PROJECTS.length - 1 : current - 1);
-  const next = () => go(current === PROJECTS.length - 1 ? 0 : current + 1);
+  const prevIdx = current === 0 ? PROJECTS.length - 1 : current - 1;
+  const nextIdx = current === PROJECTS.length - 1 ? 0 : current + 1;
+  const prev = () => go(prevIdx);
+  const next = () => go(nextIdx);
 
   const p = PROJECTS[current];
+  const prevP = PROJECTS[prevIdx];
+  const nextP = PROJECTS[nextIdx];
 
   const variants = {
-    enter: (dir) => ({ opacity: 0, x: dir > 0 ? 60 : -60 }),
+    enter: (dir) => ({ opacity: 0, x: dir > 0 ? 80 : -80 }),
     center: { opacity: 1, x: 0 },
-    exit: (dir) => ({ opacity: 0, x: dir > 0 ? -60 : 60 }),
+    exit: (dir) => ({ opacity: 0, x: dir > 0 ? -80 : 80 }),
+  };
+
+  // Get a preview image/color for a project
+  const getPreviewImage = (proj) => {
+    if (proj.heroImage) return proj.heroImage;
+    if (proj.images) return proj.images[0];
+    if (proj.image) return proj.image;
+    return null;
   };
 
   return (
@@ -408,69 +427,186 @@ export default function ProjectsSection() {
     >
       <SectionHeading num="02" title="AI Projects" />
 
-      {/* Counter + arrows */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-3">
-          <span className="font-syne font-bold text-violet-300" style={{ fontSize: "2rem" }}>{current + 1}</span>
-          <span className="font-mono text-white/30" style={{ fontSize: "1rem" }}>/ {PROJECTS.length}</span>
+      {/* Counter + dot indicators */}
+      <div className="flex items-center justify-between mb-5">
+        <div className="flex items-center gap-2">
+          <span className="font-syne font-bold text-violet-300" style={{ fontSize: "1.75rem" }}>{current + 1}</span>
+          <span className="font-mono text-white/30" style={{ fontSize: "0.95rem" }}>/ {PROJECTS.length}</span>
+          <span className="font-mono text-white/25 ml-2 hidden sm:inline" style={{ fontSize: "0.8rem" }}>
+            {p.title.length > 40 ? p.title.slice(0, 40) + "…" : p.title}
+          </span>
         </div>
-        <div className="flex items-center gap-3">
-          {/* Dot indicators */}
-          <div className="hidden sm:flex items-center gap-1.5 mr-4">
-            {PROJECTS.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => go(i)}
-                className={`rounded-full transition-all duration-300 ${
-                  i === current
-                    ? "w-6 h-2 bg-violet-400"
-                    : "w-2 h-2 bg-white/20 hover:bg-white/40"
-                }`}
-              />
-            ))}
-          </div>
-          <button
-            onClick={prev}
-            className="w-11 h-11 rounded-full border border-white/15 bg-white/4 flex items-center justify-center hover:border-violet-400/50 hover:bg-violet-400/10 transition-all duration-200 text-white/60 hover:text-violet-300"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={next}
-            className="w-11 h-11 rounded-full border border-white/15 bg-white/4 flex items-center justify-center hover:border-violet-400/50 hover:bg-violet-400/10 transition-all duration-200 text-white/60 hover:text-violet-300"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
+        <div className="hidden sm:flex items-center gap-1.5">
+          {PROJECTS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => go(i)}
+              className={`rounded-full transition-all duration-300 ${
+                i === current ? "w-6 h-2 bg-violet-400" : "w-2 h-2 bg-white/20 hover:bg-white/40"
+              }`}
+            />
+          ))}
         </div>
       </div>
 
-      {/* Carousel */}
-      <div className="relative overflow-hidden">
-        <AnimatePresence mode="wait" custom={direction}>
-          <motion.div
-            key={current}
-            custom={direction}
-            variants={variants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.35, ease: "easeInOut" }}
-          >
-            {p.type === "copa-fleet-group" ? (
-              <CopaFleetGroup project={p} index={0} cardNumber={current + 1} />
-            ) : p.type === "so101" ? (
-              <SO101Card project={p} index={0} cardNumber={current + 1} />
-            ) : (
-              <ProjectCard project={p} index={0} cardNumber={current + 1} />
+      {/* Main carousel stage — negative margin to allow side peeks */}
+      <div className="relative" style={{ margin: "0 -2rem" }}>
+
+        {/* PREV ghost peek — left side */}
+        <div
+          className="absolute left-0 top-0 bottom-0 z-20 flex items-center"
+          style={{ width: "2.5rem" }}
+          onMouseEnter={() => setHoveredSide("prev")}
+          onMouseLeave={() => setHoveredSide(null)}
+          onClick={prev}
+        >
+          {/* Stacked ghost cards depth effect */}
+          <div className="relative w-full h-full flex items-center justify-end cursor-pointer">
+            {/* Ghost card 2 (furthest back) */}
+            <div
+              className="absolute rounded-r-xl overflow-hidden border border-white/6 bg-white/2"
+              style={{
+                left: "2px", top: "12%", bottom: "12%", right: "0",
+                transform: "perspective(400px) rotateY(8deg)",
+                opacity: 0.3,
+              }}
+            />
+            {/* Ghost card 1 */}
+            <div
+              className="absolute rounded-r-xl overflow-hidden border border-violet-400/10 bg-white/3"
+              style={{
+                left: "0px", top: "6%", bottom: "6%", right: "0",
+                transform: "perspective(400px) rotateY(5deg)",
+                opacity: 0.5,
+              }}
+            />
+            {/* Arrow button */}
+            <motion.div
+              animate={{ scale: hoveredSide === "prev" ? 1.15 : 1 }}
+              transition={{ duration: 0.2 }}
+              className="absolute right-0 z-10 w-9 h-16 rounded-r-xl flex items-center justify-center"
+              style={{
+                background: hoveredSide === "prev"
+                  ? "rgba(167,139,250,0.25)"
+                  : "rgba(167,139,250,0.1)",
+                backdropFilter: "blur(8px)",
+                border: "1px solid rgba(167,139,250,0.25)",
+                borderLeft: "none",
+                transition: "background 0.2s",
+              }}
+            >
+              <ChevronLeft className="w-5 h-5 text-violet-300" />
+            </motion.div>
+
+            {/* Hover preview tooltip */}
+            {hoveredSide === "prev" && (
+              <motion.div
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="absolute left-10 top-1/2 -translate-y-1/2 z-30 w-48 rounded-xl border border-violet-400/25 overflow-hidden shadow-2xl"
+                style={{ background: "rgba(20,10,30,0.95)", backdropFilter: "blur(20px)" }}
+              >
+                {getPreviewImage(prevP) ? (
+                  <img src={getPreviewImage(prevP)} alt={prevP.title} className="w-full h-24 object-cover" />
+                ) : (
+                  <div className="w-full h-24 bg-violet-400/10 flex items-center justify-center">
+                    <span className="font-mono text-violet-400/40 text-xs">No preview</span>
+                  </div>
+                )}
+                <div className="p-3">
+                  <p className="font-mono text-violet-400/60 text-xs mb-0.5 uppercase tracking-wider">← Previous</p>
+                  <p className="font-syne font-bold text-white text-sm leading-tight">{prevP.title}</p>
+                </div>
+              </motion.div>
             )}
-          </motion.div>
-        </AnimatePresence>
-      </div>
+          </div>
+        </div>
 
-      {/* Bottom nav hint */}
-      <div className="flex justify-center gap-4 mt-6">
-        <button onClick={prev} className="font-mono text-xs text-white/25 hover:text-violet-400 transition-colors tracking-widest uppercase">← prev</button>
-        <button onClick={next} className="font-mono text-xs text-white/25 hover:text-violet-400 transition-colors tracking-widest uppercase">next →</button>
+        {/* NEXT ghost peek — right side */}
+        <div
+          className="absolute right-0 top-0 bottom-0 z-20 flex items-center"
+          style={{ width: "2.5rem" }}
+          onMouseEnter={() => setHoveredSide("next")}
+          onMouseLeave={() => setHoveredSide(null)}
+          onClick={next}
+        >
+          <div className="relative w-full h-full flex items-center justify-start cursor-pointer">
+            {/* Ghost card 2 */}
+            <div
+              className="absolute rounded-l-xl overflow-hidden border border-white/6 bg-white/2"
+              style={{
+                right: "2px", top: "12%", bottom: "12%", left: "0",
+                transform: "perspective(400px) rotateY(-8deg)",
+                opacity: 0.3,
+              }}
+            />
+            {/* Ghost card 1 */}
+            <div
+              className="absolute rounded-l-xl overflow-hidden border border-violet-400/10 bg-white/3"
+              style={{
+                right: "0px", top: "6%", bottom: "6%", left: "0",
+                transform: "perspective(400px) rotateY(-5deg)",
+                opacity: 0.5,
+              }}
+            />
+            {/* Arrow button */}
+            <motion.div
+              animate={{ scale: hoveredSide === "next" ? 1.15 : 1 }}
+              transition={{ duration: 0.2 }}
+              className="absolute left-0 z-10 w-9 h-16 rounded-l-xl flex items-center justify-center"
+              style={{
+                background: hoveredSide === "next"
+                  ? "rgba(167,139,250,0.25)"
+                  : "rgba(167,139,250,0.1)",
+                backdropFilter: "blur(8px)",
+                border: "1px solid rgba(167,139,250,0.25)",
+                borderRight: "none",
+                transition: "background 0.2s",
+              }}
+            >
+              <ChevronRight className="w-5 h-5 text-violet-300" />
+            </motion.div>
+
+            {/* Hover preview tooltip */}
+            {hoveredSide === "next" && (
+              <motion.div
+                initial={{ opacity: 0, x: 8 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="absolute right-10 top-1/2 -translate-y-1/2 z-30 w-48 rounded-xl border border-violet-400/25 overflow-hidden shadow-2xl"
+                style={{ background: "rgba(20,10,30,0.95)", backdropFilter: "blur(20px)" }}
+              >
+                {getPreviewImage(nextP) ? (
+                  <img src={getPreviewImage(nextP)} alt={nextP.title} className="w-full h-24 object-cover" />
+                ) : (
+                  <div className="w-full h-24 bg-violet-400/10 flex items-center justify-center">
+                    <span className="font-mono text-violet-400/40 text-xs">No preview</span>
+                  </div>
+                )}
+                <div className="p-3">
+                  <p className="font-mono text-violet-400/60 text-xs mb-0.5 uppercase tracking-wider">Next →</p>
+                  <p className="font-syne font-bold text-white text-sm leading-tight">{nextP.title}</p>
+                </div>
+              </motion.div>
+            )}
+          </div>
+        </div>
+
+        {/* Active card */}
+        <div style={{ margin: "0 2.5rem", overflow: "hidden" }}>
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={current}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.32, ease: "easeInOut" }}
+            >
+              {renderCard(p, 0, current + 1)}
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </motion.div>
   );
