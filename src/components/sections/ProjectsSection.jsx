@@ -451,6 +451,40 @@ export default function ProjectsSection() {
         </div>
       </div>
 
+      {/* Navigation buttons — above the card */}
+      <div className="grid grid-cols-2 gap-3 mb-4">
+        <button
+          onClick={prev}
+          className="flex items-center justify-center gap-2 py-3.5 rounded-2xl border border-white/12 bg-white/4 text-white/50 hover:bg-white/8 hover:text-white/80 hover:border-white/25 transition-all duration-200 font-inter font-semibold"
+          style={{ fontSize: "1rem" }}
+        >
+          <ChevronLeft className="w-5 h-5" strokeWidth={2.5} />
+          Previous
+        </button>
+
+        <motion.button
+          onClick={next}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="relative flex items-center justify-center gap-3 py-3.5 rounded-2xl font-inter font-bold text-white overflow-hidden"
+          style={{
+            fontSize: "1.05rem",
+            background: "linear-gradient(135deg, rgba(139,92,246,0.7), rgba(99,102,241,0.6))",
+            border: "1.5px solid rgba(167,139,250,0.7)",
+            boxShadow: "0 0 28px rgba(139,92,246,0.4), inset 0 1px 0 rgba(255,255,255,0.1)",
+          }}
+        >
+          <motion.div
+            className="absolute inset-0 opacity-30"
+            animate={{ x: ["-100%", "200%"] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
+            style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)", width: "50%" }}
+          />
+          Next Project
+          <ChevronRight className="w-5 h-5" strokeWidth={2.5} />
+        </motion.button>
+      </div>
+
       {/* Main carousel stage — negative margin to allow side peeks */}
       <div className="relative" style={{ margin: "0 -2rem" }}>
 
@@ -613,43 +647,7 @@ export default function ProjectsSection() {
         </div>
       </div>
 
-      {/* Navigation — full width next/prev strip */}
-      <div className="mt-4 grid grid-cols-2 gap-3">
-        <button
-          onClick={prev}
-          className="flex items-center justify-center gap-2 py-4 rounded-2xl border border-white/12 bg-white/4 text-white/50 hover:bg-white/8 hover:text-white/80 hover:border-white/25 transition-all duration-200 font-inter font-semibold"
-          style={{ fontSize: "1rem" }}
-        >
-          <ChevronLeft className="w-5 h-5" strokeWidth={2.5} />
-          Previous
-        </button>
 
-        <motion.button
-          onClick={next}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="relative flex items-center justify-center gap-3 py-4 rounded-2xl font-inter font-bold text-white overflow-hidden"
-          style={{
-            fontSize: "1.05rem",
-            background: "linear-gradient(135deg, rgba(139,92,246,0.7), rgba(99,102,241,0.6))",
-            border: "1.5px solid rgba(167,139,250,0.7)",
-            boxShadow: "0 0 28px rgba(139,92,246,0.4), inset 0 1px 0 rgba(255,255,255,0.1)",
-          }}
-        >
-          {/* Animated shimmer */}
-          <motion.div
-            className="absolute inset-0 opacity-30"
-            animate={{ x: ["-100%", "200%"] }}
-            transition={{ duration: 2.2, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
-            style={{
-              background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
-              width: "50%",
-            }}
-          />
-          Next Project
-          <ChevronRight className="w-5 h-5" strokeWidth={2.5} />
-        </motion.button>
-      </div>
     </motion.div>
   );
 }
