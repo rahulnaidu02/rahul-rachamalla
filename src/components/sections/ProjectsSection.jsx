@@ -613,33 +613,39 @@ export default function ProjectsSection() {
         </div>
       </div>
 
-      {/* Prominent next/prev navigation bar */}
-      <div className="flex items-center justify-between mt-6 gap-4">
+      {/* Navigation — full width next/prev strip */}
+      <div className="mt-4 grid grid-cols-2 gap-3">
         <button
           onClick={prev}
-          className="flex items-center gap-2 px-5 py-3 rounded-xl border border-violet-400/30 bg-violet-400/8 text-violet-300 hover:bg-violet-400/18 hover:border-violet-400/60 transition-all duration-200 font-inter font-semibold"
-          style={{ fontSize: "0.975rem" }}
+          className="flex items-center justify-center gap-2 py-4 rounded-2xl border border-white/12 bg-white/4 text-white/50 hover:bg-white/8 hover:text-white/80 hover:border-white/25 transition-all duration-200 font-inter font-semibold"
+          style={{ fontSize: "1rem" }}
         >
           <ChevronLeft className="w-5 h-5" strokeWidth={2.5} />
           Previous
         </button>
 
-        <div className="flex flex-col items-center gap-1">
-          <span className="font-mono text-white/35 text-xs tracking-widest uppercase">
-            {current + 1} of {PROJECTS.length}
-          </span>
-        </div>
-
         <motion.button
           onClick={next}
-          animate={{ scale: [1, 1.03, 1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex items-center gap-2 px-6 py-3 rounded-xl border border-violet-400/70 bg-violet-400/15 text-violet-200 hover:bg-violet-400/28 hover:border-violet-400 transition-all duration-200 font-inter font-bold"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="relative flex items-center justify-center gap-3 py-4 rounded-2xl font-inter font-bold text-white overflow-hidden"
           style={{
-            fontSize: "0.975rem",
-            boxShadow: "0 0 18px rgba(167,139,250,0.25)",
+            fontSize: "1.05rem",
+            background: "linear-gradient(135deg, rgba(139,92,246,0.7), rgba(99,102,241,0.6))",
+            border: "1.5px solid rgba(167,139,250,0.7)",
+            boxShadow: "0 0 28px rgba(139,92,246,0.4), inset 0 1px 0 rgba(255,255,255,0.1)",
           }}
         >
+          {/* Animated shimmer */}
+          <motion.div
+            className="absolute inset-0 opacity-30"
+            animate={{ x: ["-100%", "200%"] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
+            style={{
+              background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
+              width: "50%",
+            }}
+          />
           Next Project
           <ChevronRight className="w-5 h-5" strokeWidth={2.5} />
         </motion.button>
