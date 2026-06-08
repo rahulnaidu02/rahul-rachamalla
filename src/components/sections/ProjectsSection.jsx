@@ -612,6 +612,38 @@ export default function ProjectsSection() {
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Prominent next/prev navigation bar */}
+      <div className="flex items-center justify-between mt-6 gap-4">
+        <button
+          onClick={prev}
+          className="flex items-center gap-2 px-5 py-3 rounded-xl border border-violet-400/30 bg-violet-400/8 text-violet-300 hover:bg-violet-400/18 hover:border-violet-400/60 transition-all duration-200 font-inter font-semibold"
+          style={{ fontSize: "0.975rem" }}
+        >
+          <ChevronLeft className="w-5 h-5" strokeWidth={2.5} />
+          Previous
+        </button>
+
+        <div className="flex flex-col items-center gap-1">
+          <span className="font-mono text-white/35 text-xs tracking-widest uppercase">
+            {current + 1} of {PROJECTS.length}
+          </span>
+        </div>
+
+        <motion.button
+          onClick={next}
+          animate={{ scale: [1, 1.03, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="flex items-center gap-2 px-6 py-3 rounded-xl border border-violet-400/70 bg-violet-400/15 text-violet-200 hover:bg-violet-400/28 hover:border-violet-400 transition-all duration-200 font-inter font-bold"
+          style={{
+            fontSize: "0.975rem",
+            boxShadow: "0 0 18px rgba(167,139,250,0.25)",
+          }}
+        >
+          Next Project
+          <ChevronRight className="w-5 h-5" strokeWidth={2.5} />
+        </motion.button>
+      </div>
     </motion.div>
   );
 }
