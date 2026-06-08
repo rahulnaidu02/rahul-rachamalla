@@ -133,27 +133,27 @@ const PROJECTS = [
   },
 ];
 
-function MediaPlaceholder({ flagship, heroImage }) {
+function MediaPlaceholder({ flagship, heroImage, compact }) {
   if (flagship) {
     return (
-      <div className="w-full border-b border-white/6 overflow-hidden">
+      <div className={`w-full border-b border-white/6 overflow-hidden ${compact ? "max-h-40" : ""}`}>
         <img
           src="https://media.base44.com/images/public/6a061760231cbb0e0f2caa6b/077079eb9_Reference_MethodFlowofCopaAutonomousUnit.png"
           alt="Method Flow: COPA Autonomous Sanitation System"
-          className="w-full object-contain bg-white"
+          className={`w-full bg-white ${compact ? "object-cover object-top h-40" : "object-contain"}`}
         />
       </div>
     );
   }
   if (heroImage) {
     return (
-      <div className="w-full border-b border-white/6 overflow-hidden h-64 lg:h-80">
+      <div className={`w-full border-b border-white/6 overflow-hidden ${compact ? "h-40" : "h-64 lg:h-80"}`}>
         <img src={heroImage} alt="Project visual" className="w-full h-full object-cover object-center" />
       </div>
     );
   }
   return (
-    <div className="w-full flex-shrink-0 flex items-center justify-center border-b border-white/6 bg-gradient-to-br from-white/3 to-transparent h-52 lg:h-60">
+    <div className={`w-full flex-shrink-0 flex items-center justify-center border-b border-white/6 bg-gradient-to-br from-white/3 to-transparent ${compact ? "h-32" : "h-52 lg:h-60"}`}>
       <div className="text-center">
         <div className="w-12 h-12 rounded-full border border-white/12 flex items-center justify-center mx-auto mb-3 bg-white/4">
           <Play className="w-5 h-5 text-white/20" />
@@ -189,7 +189,7 @@ function ProjectButton({ label, href }) {
   );
 }
 
-function CopaFleetGroup({ project, index, cardNumber }) {
+function CopaFleetGroup({ project, index, cardNumber, compact }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 28 }}
@@ -216,7 +216,7 @@ function CopaFleetGroup({ project, index, cardNumber }) {
         </a>
       </div>
       {/* Image display */}
-      <div className="overflow-hidden" style={{ height: "500px" }}>
+      <div className="overflow-hidden" style={{ height: compact ? "200px" : "500px" }}>
         <img src={project.images[0]} alt={project.title} className="w-full h-full object-cover object-top" />
       </div>
       {/* Shared description below */}
@@ -235,7 +235,7 @@ function CopaFleetGroup({ project, index, cardNumber }) {
   );
 }
 
-function SO101Card({ project, index, cardNumber }) {
+function SO101Card({ project, index, cardNumber, compact }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 28 }}
@@ -254,7 +254,7 @@ function SO101Card({ project, index, cardNumber }) {
       </div>
       {/* Video GIF on top, then static image */}
       <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/8">
-        <div className="overflow-hidden" style={{ height: "280px" }}>
+        <div className="overflow-hidden" style={{ height: compact ? "150px" : "280px" }}>
           <video
             src={project.video}
             autoPlay
@@ -264,7 +264,7 @@ function SO101Card({ project, index, cardNumber }) {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="overflow-hidden" style={{ height: "280px" }}>
+        <div className="overflow-hidden" style={{ height: compact ? "150px" : "280px" }}>
           <img src={project.image} alt="SO101 Robotic Arm" className="w-full h-full object-cover object-center" />
         </div>
       </div>
@@ -289,7 +289,7 @@ function SO101Card({ project, index, cardNumber }) {
   );
 }
 
-function ProjectCard({ project, index, cardNumber }) {
+function ProjectCard({ project, index, cardNumber, compact }) {
   const { title, subtitle, description, tags, buttons, badge, flagship, heroImage } = project;
 
   return (
@@ -343,7 +343,7 @@ function ProjectCard({ project, index, cardNumber }) {
         </div>
       </div>
 
-      <MediaPlaceholder flagship={flagship} heroImage={heroImage} />
+      <MediaPlaceholder flagship={flagship} heroImage={heroImage} compact={compact} />
 
       <div className="p-8 lg:p-10 flex flex-col gap-5">
 
@@ -379,16 +379,17 @@ function ProjectCard({ project, index, cardNumber }) {
   );
 }
 
-function renderCard(p, idx, cardNum) {
-  if (p.type === "copa-fleet-group") return <CopaFleetGroup project={p} index={idx} cardNumber={cardNum} />;
-  if (p.type === "so101") return <SO101Card project={p} index={idx} cardNumber={cardNum} />;
-  return <ProjectCard project={p} index={idx} cardNumber={cardNum} />;
+function renderCard(p, idx, cardNum, compact) {
+  if (p.type === "copa-fleet-group") return <CopaFleetGroup project={p} index={idx} cardNumber={cardNum} compact={compact} />;
+  if (p.type === "so101") return <SO101Card project={p} index={idx} cardNumber={cardNum} compact={compact} />;
+  return <ProjectCard project={p} index={idx} cardNumber={cardNum} compact={compact} />;
 }
 
 export default function ProjectsSection() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
   const [hoveredSide, setHoveredSide] = useState(null); // 'prev' | 'next' | null
+  const [compact, setCompact] = useState(true);
 
   const go = (next) => {
     setDirection(next > current ? 1 : -1);
@@ -452,7 +453,7 @@ export default function ProjectsSection() {
       </div>
 
       {/* Navigation buttons — above the card */}
-      <div className="grid grid-cols-2 gap-3 mb-4">
+      <div className="grid grid-cols-2 gap-3 mb-4" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
         <button
           onClick={prev}
           className="flex items-center justify-center gap-2 py-3.5 rounded-2xl border border-white/12 bg-white/4 text-white/50 hover:bg-white/8 hover:text-white/80 hover:border-white/25 transition-all duration-200 font-inter font-semibold"
@@ -483,6 +484,16 @@ export default function ProjectsSection() {
           Next Project
           <ChevronRight className="w-5 h-5" strokeWidth={2.5} />
         </motion.button>
+      </div>
+
+      {/* Compact toggle */}
+      <div className="flex justify-center mb-3">
+        <button
+          onClick={() => setCompact(c => !c)}
+          className="font-mono text-xs text-white/30 hover:text-white/60 transition-colors tracking-widest uppercase flex items-center gap-1.5"
+        >
+          {compact ? "▼ expand image" : "▲ collapse image"}
+        </button>
       </div>
 
       {/* Main carousel stage — negative margin to allow side peeks */}
@@ -641,7 +652,7 @@ export default function ProjectsSection() {
               exit="exit"
               transition={{ duration: 0.32, ease: "easeInOut" }}
             >
-              {renderCard(p, 0, current + 1)}
+              {renderCard(p, 0, current + 1, compact)}
             </motion.div>
           </AnimatePresence>
         </div>
