@@ -453,11 +453,11 @@ export default function ProjectsSection() {
       </div>
 
       {/* Navigation buttons — above the card */}
-      <div className="grid grid-cols-2 gap-3 mb-4" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
+      <div className="grid grid-cols-2 gap-3 mb-4">
         <button
           onClick={prev}
-          className="flex items-center justify-center gap-2 py-3.5 rounded-2xl border border-white/12 bg-white/4 text-white/50 hover:bg-white/8 hover:text-white/80 hover:border-white/25 transition-all duration-200 font-inter font-semibold"
-          style={{ fontSize: "1rem" }}
+          className="flex items-center justify-center gap-2 py-3.5 rounded-2xl border border-white/20 bg-white/6 text-white/70 hover:bg-white/10 hover:text-white hover:border-white/35 transition-all duration-200 font-inter font-bold"
+          style={{ fontSize: "1.05rem" }}
         >
           <ChevronLeft className="w-5 h-5" strokeWidth={2.5} />
           Previous
@@ -467,7 +467,7 @@ export default function ProjectsSection() {
           onClick={next}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="relative flex items-center justify-center gap-3 py-3.5 rounded-2xl font-inter font-bold text-white overflow-hidden"
+          className="relative flex items-center justify-center gap-2 py-3.5 rounded-2xl font-inter font-bold text-white overflow-hidden"
           style={{
             fontSize: "1.05rem",
             background: "linear-gradient(135deg, rgba(139,92,246,0.7), rgba(99,102,241,0.6))",
